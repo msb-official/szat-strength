@@ -85,20 +85,23 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 /* Mobile: BEAST ends ~65% down the 828x1792 image */
 @media(max-width:768px) {
   .nav {
-    /* Pulls the bar 100px ABOVE the screen to seal the notch gap */
-    margin-top: -100px !important;
-    
-    /* Pushes the logo/menu back down 100px + original 16px padding */
-    padding-top: 116px !important; 
     top: 0 !important;
-
-    /* High-opacity background and blur to act as a solid ceiling */
-    background: rgba(19, 12, 20, 0.95) !important;
+    padding: 12px 0 !important; /* Standard padding */
+    background: rgba(19, 12, 20, 0.92) !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
-    
     border-bottom: 1px solid var(--border);
-    transition: background .4s;
+  }
+  .nav::before {
+    content: '';
+    position: absolute;
+    top: -100px; /* Reaches up past the clock */
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: inherit; /* Inherits the color/transparency */
+    backdrop-filter: inherit; /* Inherits the blur */
+    -webkit-backdrop-filter: inherit;
   }
   .hero {
     /* Ensures the image height is what defines the container height */
