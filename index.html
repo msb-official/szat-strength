@@ -243,11 +243,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:10;
 /* ─── OFFER 03: VAULT / APP ─────────────────────────── */
 .offer-vault{position:relative;overflow:hidden;}
 .offer-vault__glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(184,78,198,.09) 0%,transparent 65%);top:50%;right:-80px;transform:translateY(-50%);pointer-events:none;}
-.offer-vault__grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.offer-vault__grid{display:grid;grid-template-columns:5fr 7fr;gap:60px;align-items:center;position:relative;z-index:1;}
 .offer-vault__desc{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:22px;}
 .offer-vault__mockup{display:flex;justify-content:center;align-items:center;position:relative;}
 .vault-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(184,78,198,.2) 0%,transparent 65%);pointer-events:none;}
-.offer-vault__mockup img{width:260px;position:relative;z-index:1;filter:drop-shadow(0 30px 60px rgba(184,78,198,.3));animation:floatY 4s ease-in-out infinite;}
+.offer-vault__mockup img{width:480px;position:relative;z-index:1;filter:drop-shadow(0 30px 60px rgba(184,78,198,.3));animation:floatY 4s ease-in-out infinite;}
 @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
 @media(max-width:860px){.offer-vault__grid{grid-template-columns:1fr;}.offer-vault__grid>div:first-child{order:2;}.offer-vault__mockup{order:1;margin-bottom:20px;}}
 
