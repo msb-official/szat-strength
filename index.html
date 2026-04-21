@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Szat Strength — Be An Absolute Beast.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,6 +84,20 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 .hero__actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 /* Mobile: BEAST ends ~65% down the 828x1792 image */
 @media(max-width:768px) {
+  .nav {
+    /* Forces the nav background to start at the absolute top of the phone glass */
+    top: 0 !important;
+    
+    /* This adds extra padding at the top to cover the clock/battery area background */
+    padding-top: env(safe-area-inset-top) !important;
+    
+    /* This ensures your blur effect covers that top gap too */
+    background: rgba(19, 12, 20, 0.9) !important;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    
+    border-bottom: 1px solid var(--border);
+  }
   .hero {
     /* Ensures the image height is what defines the container height */
     min-height: auto; 
