@@ -77,11 +77,13 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 .hero{position:relative;width:100%;}
 .hero__picture{display:block;width:100%;}
 .hero__picture img{width:100%;display:block;}
-.hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(19,12,20,.95) 0%,rgba(19,12,20,.5) 16%,transparent 42%);}
-.hero__content{position:absolute;bottom:6%;left:0;right:0;text-align:center;z-index:2;padding:0 28px;animation:fadeUp .9s .2s ease both;}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(19,12,20,.95) 0%,rgba(19,12,20,.55) 18%,transparent 45%);}
+/* top:71% = just below BEAST (which ends ~68% down the 1440x1008 image) */
+.hero__content{position:absolute;top:71%;left:0;right:0;text-align:center;z-index:2;padding:0 28px;animation:fadeUp .9s .2s ease both;}
 .hero__sub{font-family:var(--fb);font-size:16px;line-height:1.65;color:rgba(255,255,255,.72);max-width:520px;margin:0 auto 26px;}
 .hero__actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-@media(max-width:768px){.hero__content{bottom:6%;}.hero__sub{font-size:14px;max-width:290px;}}
+/* Mobile: BEAST ends ~65% down the 828x1792 image */
+@media(max-width:768px){.hero__content{top:67%;}.hero__sub{font-size:15px;max-width:320px;}}
 
 /* ─── TRUST BAR ─────────────────────────────────────── */
 .trust-bar{background:rgba(0,0,0,.35);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;}
@@ -118,6 +120,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 .pillar__title{font-family:var(--fh);font-style:italic;font-size:22px;text-transform:uppercase;color:var(--white);line-height:1.1;margin-bottom:10px;}
 .pillar__body{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;}
 @media(max-width:860px){.pillars__grid{grid-template-columns:1fr;}}
+
+/* ─── OFFER BADGE (Tier 01 prominent label) ─────────── */
+.offer-badge{display:inline-flex;align-items:center;gap:10px;background:var(--grad);border-radius:8px;padding:8px 18px;margin-bottom:18px;}
+.offer-badge span{font-family:var(--fh);font-style:italic;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--white);}
+.offer-badge__dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5);flex-shrink:0;}
 
 /* ─── OFFER 01: 1:1 COACHING ─────────────────────────  */
 .offer-11{position:relative;overflow:hidden;}
@@ -330,11 +337,14 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 /* ─── RESPONSIVE ────────────────────────────────────── */
 @media(max-width:640px){
   .sp{padding:72px 0;}
+  .container{padding:0 18px;}
   .nav__links,.nav__cta{display:none;}
   .nav__hamburger{display:flex;}
   .trust-sep{display:none;}
   .hero__actions{flex-direction:column;align-items:center;}
   .footer__bottom{flex-direction:column;text-align:center;}
+  /* Prevent any section from overflowing horizontally */
+  section,footer,div{max-width:100%;}
 }
 </style>
 </head>
@@ -344,7 +354,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 <div class="nav__mobile" id="mobileMenu">
   <button class="nav__mobile-close" onclick="closeMobileMenu()">✕</button>
   <a href="#coaching" onclick="closeMobileMenu()">1:1 Coaching</a>
-  <a href="#collective" onclick="closeMobileMenu()">The Collective</a>
+  <a href="#collective" onclick="closeMobileMenu()">Group Coaching</a>
   <a href="#app" onclick="closeMobileMenu()">The App</a>
   <a href="#about" onclick="closeMobileMenu()">About</a>
   <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
@@ -357,7 +367,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
     <a href="#" class="nav__logo"><img src="szat-Logo.png" alt="Szat Strength"></a>
     <ul class="nav__links">
       <li><a href="#coaching">1:1 Coaching</a></li>
-      <li><a href="#collective">Collective</a></li>
+      <li><a href="#collective">Group Coaching</a></li>
       <li><a href="#app">The App</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -468,9 +478,9 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
       </div>
 
       <div>
-        <span class="offer-11__tier reveal">Tier 01 — The Premier Offer</span>
+        <div class="offer-badge reveal"><span class="offer-badge__dot"></span><span>1:1 Private Coaching</span><span class="offer-badge__dot"></span></div>
         <h2 class="offer-11__headline reveal d1">Zero Guesswork.<br><span class="grad-text">Maximum Results.</span></h2>
-        <p class="offer-11__sub reveal d1">1:1 Custom Performance Coaching</p>
+        <p class="offer-11__sub reveal d1">The highest level of accountability we offer.</p>
         <p class="offer-11__desc reveal d2">A full-scale partnership. I handle the programming, the logic, and the adjustments. You handle the work. Built specifically for you — your equipment, your schedule, your injury history, and your goals. No gaps. No confusion.</p>
 
         <div class="offer-11__features reveal d2">
@@ -504,10 +514,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
           </div>
         </div>
 
-        <div class="offer-11__guarantee reveal d3">
-          <div class="offer-11__guarantee-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <p class="offer-11__guarantee-text"><strong>Progress Guarantee:</strong> Follow the program, show up every day, dial in your nutrition — and I guarantee your results. Not satisfied? You get your money back.</p>
-        </div>
 
         <div class="reveal d3"><a href="#final-cta" class="btn-grad">Apply for 1:1 Coaching →</a></div>
       </div>
@@ -553,8 +559,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
   <div class="container">
     <div class="offer-collective__grid">
       <div>
-        <span class="lbl reveal">Tier 02</span>
-        <h2 class="sh reveal d1">The Strength <span class="grad-text">Collective.</span></h2>
+        <span class="lbl reveal">Group Coaching</span>
+        <h2 class="sh reveal d1">Train Together.<br><span class="grad-text">Grow Together.</span></h2>
         <p class="offer-collective__desc reveal d2">Follow the exact same high-level programming as a community of like-minded athletes. You're not training alone — you're training with a team that holds you to the same standard you hold yourself.</p>
         <div class="offer-feats reveal d2">
           <div class="offer-feat"><span class="offer-feat-check"></span><div class="offer-feat-text"><strong>The Collective Program</strong>New training blocks delivered every week through the app — the same programming I run with my top athletes.</div></div>
@@ -583,8 +589,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
   <div class="container">
     <div class="offer-vault__grid">
       <div>
-        <span class="lbl reveal">Tier 03</span>
-        <h2 class="sh reveal d1">The Training <span class="grad-text">Vault.</span></h2>
+        <span class="lbl reveal">On-Demand Training</span>
+        <h2 class="sh reveal d1">Every Program.<br><span class="grad-text">One App.</span></h2>
         <p class="offer-vault__desc reveal d2">Perfect for the autonomous athlete. Instant access to every specialized program I've ever built — follow them at your own pace, with all the tools to go with them.</p>
         <div class="offer-feats reveal d2">
           <div class="offer-feat"><span class="offer-feat-check"></span><div class="offer-feat-text"><strong>Full Program Library</strong>Unlock Strongman, Powerlifting, Olympic Lifting, Hypertrophy, and General Strength programs instantly.</div></div>
@@ -607,7 +613,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 <section class="sp" id="library">
   <div class="container">
     <div class="prog-lib__header">
-      <span class="lbl reveal">Inside the Vault</span>
+      <span class="lbl reveal">Inside the App</span>
       <h2 class="sh reveal d1">Every Program. <span class="grad-text">One Subscription.</span></h2>
       <p class="prog-lib__sub reveal d2">20+ programs available. Subscribe and unlock them all.</p>
     </div>
@@ -776,7 +782,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
         <div class="footer__col-title">Quick Links</div>
         <ul class="footer__links">
           <li><a href="#coaching">1:1 Coaching</a></li>
-          <li><a href="#collective">The Collective</a></li>
+          <li><a href="#collective">Group Coaching</a></li>
           <li><a href="https://szatstrength.programs.app" target="_blank" rel="noopener">The Training Vault</a></li>
           <li><a href="#about">About Joey</a></li>
           <li><a href="#faq">FAQ</a></li>
