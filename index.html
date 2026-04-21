@@ -4,357 +4,273 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Szat Strength — Be An Absolute Beast.</title>
-
-<!-- ============================================================
-  IMAGE FILE NAMES — upload all of these to your GitHub repo root
-  ─────────────────────────────────────────────────────────────
-  hero-bg-desktop.png     → Hero background desktop (1440×1008)
-  hero-bg-mobile.png      → Hero background mobile  (390×844)
-  joey-training-01.jpg    → Problem/System section action shot
-  joey-about.jpg          → About section portrait
-  joey-cta-bg.jpg         → Final CTA full-bleed background
-  testimonial-anna.jpg    → Anna W. avatar (square crop)
-  testimonial-sean.jpg    → Sean D. avatar (square crop)
-  testimonial-richard.jpg → Richard M. avatar (square crop)
-  program-01.jpg          → Program thumbnail (16:9)
-  program-02.jpg          → Program thumbnail (16:9)
-  program-03.jpg          → Program thumbnail (16:9)
-  program-04.jpg          → Program thumbnail (16:9)
-  program-05.jpg          → Program thumbnail (16:9)
-  program-06.jpg          → Program thumbnail (16:9)
-  app-mockup.png          → App phone mockup (transparent bg ideal)
-  Closeness-Bold-Italic.woff2  → Heading font (already in root ✓)
-============================================================ -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
-
 <style>
-/* ─── FONT ──────────────────────────────────────────────── */
+
+/* ─── FONT ─────────────────────────────────────────── */
 @font-face {
   font-family: 'Closeness';
   src: url('Closeness-Bold-Italic.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
+  font-weight: 700; font-style: italic; font-display: swap;
 }
 
-/* ─── TOKENS ─────────────────────────────────────────────── */
+/* ─── TOKENS ───────────────────────────────────────── */
 :root {
-  --bg:        #130C14;
-  --bg-card:   #1C141D;
-  --bg-deep:   #000000;
-  --accent:    #B84EC6;
-  --accent-2:  #9866C9;
-  --grad:      linear-gradient(90deg, #BE4AC5, #9866C9);
-  --muted:     #707070;
-  --white:     #FFFFFF;
-  --border:    rgba(255,255,255,0.07);
-  --font-head: 'Closeness', 'Roboto Condensed', sans-serif;
-  --font-body: 'Roboto Condensed', sans-serif;
+  --bg:       #130C14;
+  --bg-card:  #1C141D;
+  --accent:   #B84EC6;
+  --accent-2: #9866C9;
+  --grad:     linear-gradient(90deg, #BE4AC5, #9866C9);
+  --muted:    #707070;
+  --white:    #FFFFFF;
+  --border:   rgba(255,255,255,0.07);
+  --fh:       'Closeness', 'Roboto Condensed', sans-serif;
+  --fb:       'Roboto Condensed', sans-serif;
 }
 
-/* ─── RESET ──────────────────────────────────────────────── */
+/* ─── RESET ────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: var(--font-body);
-  line-height: 1.5;
-  overflow-x: hidden;
-}
+body { background: var(--bg); color: var(--white); font-family: var(--fb); line-height: 1.5; overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* ─── UTILS ──────────────────────────────────────────────── */
+/* ─── UTILS ────────────────────────────────────────── */
 .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
-.section-pad { padding: 110px 0; }
+.sp { padding: 100px 0; }
 .grad-text {
   background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .section-label {
-  font-family: var(--font-head);
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
-  display: block;
-  margin-bottom: 14px;
+  font-family: var(--fh); font-style: italic;
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); display: block; margin-bottom: 12px;
 }
-.section-headline {
-  font-family: var(--font-head);
-  font-style: italic;
-  text-transform: uppercase;
-  font-size: clamp(36px, 5vw, 60px);
-  line-height: 1;
-  color: var(--white);
-  margin-bottom: 24px;
-  letter-spacing: 0.5px;
+.sh { /* section headline */
+  font-family: var(--fh); font-style: italic; text-transform: uppercase;
+  font-size: clamp(32px, 4vw, 52px); line-height: 1.05;
+  color: var(--white); margin-bottom: 20px;
 }
 
-/* ─── NOISE ──────────────────────────────────────────────── */
+/* ─── NOISE OVERLAY ────────────────────────────────── */
 body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 999;
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
-/* ─── NAV ────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════ */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 20px 0;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 0;
   background: rgba(19,12,20,0);
-  transition: background 0.4s, padding 0.3s, border-color 0.4s;
   border-bottom: 1px solid transparent;
+  transition: background 0.4s, border-color 0.4s, padding 0.3s;
 }
 .nav.scrolled {
-  background: rgba(19,12,20,0.9);
+  background: rgba(19,12,20,0.92);
   backdrop-filter: blur(18px);
-  padding: 14px 0;
   border-color: var(--border);
+  padding: 12px 0;
 }
 .nav__inner {
   display: flex; align-items: center; justify-content: space-between;
   max-width: 1140px; margin: 0 auto; padding: 0 28px;
 }
-.nav__logo {
-  display: flex; align-items: center; gap: 10px;
-}
-.nav__logo-mark {
-  width: 38px; height: 38px;
-  background: var(--grad);
-  clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-head); font-style: italic;
-  font-size: 12px; font-weight: 700; color: var(--white);
-  letter-spacing: 1px; flex-shrink: 0;
-}
-.nav__logo-name {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 17px; font-weight: 700;
-  letter-spacing: 3px; text-transform: uppercase; color: var(--white);
+.nav__logo img {
+  height: 48px; width: auto; display: block;
 }
 .nav__links {
-  display: flex; gap: 30px;
+  display: flex; gap: 28px;
 }
 .nav__links a {
-  font-family: var(--font-head); font-style: italic;
+  font-family: var(--fh); font-style: italic;
   font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
   color: var(--muted); transition: color 0.2s;
 }
 .nav__links a:hover { color: var(--white); }
 .nav__cta {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 13px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 10px 22px;
-  background: var(--grad); color: var(--white);
+  font-family: var(--fh); font-style: italic;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 10px 22px; background: var(--grad); color: var(--white);
   border-radius: 6px; transition: opacity 0.2s, transform 0.2s;
 }
 .nav__cta:hover { opacity: 0.85; transform: translateY(-1px); }
+.nav__hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+}
+.nav__hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--white); border-radius: 2px; transition: all 0.3s;
+}
+.nav__mobile-menu {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(19,12,20,0.97); z-index: 200;
+  flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+}
+.nav__mobile-menu.open { display: flex; }
+.nav__mobile-menu a {
+  font-family: var(--fh); font-style: italic;
+  font-size: 28px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--white); transition: color 0.2s;
+}
+.nav__mobile-menu a:hover { color: var(--accent); }
+.nav__mobile-close {
+  position: absolute; top: 24px; right: 28px;
+  background: none; border: none; color: var(--white); font-size: 32px; cursor: pointer;
+}
 
-/* ─── HERO ───────────────────────────────────────────────── */
+/* ─── BUTTONS ──────────────────────────────────────── */
+.btn-primary {
+  font-family: var(--fh); font-style: italic;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 15px 32px; background: var(--white); color: var(--accent);
+  border-radius: 7px; border: none; cursor: pointer; display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(184,78,198,0.4); }
+.btn-secondary {
+  font-family: var(--fh); font-style: italic;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 32px; background: transparent; color: var(--white);
+  border-radius: 7px; border: 1.5px solid rgba(255,255,255,0.25);
+  cursor: pointer; display: inline-block; transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.btn-grad {
+  font-family: var(--fh); font-style: italic;
+  font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 18px 44px; background: var(--grad); color: var(--white);
+  border-radius: 8px; border: none; cursor: pointer; display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-grad:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(184,78,198,0.45); }
+
+/* ═══════════════════════════════════════════════════
+   HERO
+   Background image carries the headline.
+   Only subtext + CTAs are HTML overlays.
+═══════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  width: 100%;
-  /* Desktop: image is 1440×1008, ratio = 70% */
-  padding-bottom: 70%;
-  min-height: 100vh;
+  height: 100vh; min-height: 580px;
   background-image: url('hero-bg-desktop.png');
-  background-size: cover;
-  background-position: center top;
+  background-size: cover; background-position: center top;
   background-repeat: no-repeat;
   overflow: hidden;
 }
-/* Overlay for text readability at bottom */
+/* Fade bottom so subtext sits cleanly */
 .hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(19,12,20,0.9) 0%, rgba(19,12,20,0.2) 40%, transparent 65%);
-  z-index: 1;
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top,
+    rgba(19,12,20,0.92) 0%,
+    rgba(19,12,20,0.5) 30%,
+    transparent 60%);
 }
 .hero__content {
   position: absolute;
-  bottom: 9%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  text-align: center;
-  width: 100%;
-  padding: 0 28px;
+  bottom: 9%; left: 0; right: 0;
+  z-index: 2; text-align: center; padding: 0 28px;
   animation: fadeUp 0.9s 0.2s ease both;
 }
 .hero__sub {
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.7);
-  max-width: 560px;
-  margin: 0 auto 32px;
+  font-family: var(--fb); font-size: 16px; line-height: 1.65;
+  color: rgba(255,255,255,0.72);
+  max-width: 520px; margin: 0 auto 28px;
 }
-.hero__actions {
-  display: flex; gap: 14px;
-  justify-content: center; flex-wrap: wrap;
-}
-.btn-primary {
-  font-family: var(--font-head); font-style: italic;
-  font-weight: 700; font-size: 14px;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 16px 34px;
-  background: var(--white); color: var(--accent);
-  border-radius: 7px; border: none; cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: inline-block;
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 36px rgba(184,78,198,0.4);
-}
-.btn-secondary {
-  font-family: var(--font-head); font-style: italic;
-  font-weight: 700; font-size: 14px;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 15px 34px;
-  background: transparent; color: var(--white);
-  border-radius: 7px;
-  border: 1.5px solid rgba(255,255,255,0.3);
-  cursor: pointer; display: inline-block;
-  transition: border-color 0.2s, color 0.2s, transform 0.2s;
-}
-.btn-secondary:hover {
-  border-color: var(--accent); color: var(--accent);
-  transform: translateY(-2px);
-}
+.hero__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-/* Mobile hero */
 @media (max-width: 768px) {
   .hero {
-    padding-bottom: 0;
-    /* 390×844 ratio = 216% */
-    height: 100svh;
     background-image: url('hero-bg-mobile.png');
     background-position: center top;
   }
   .hero__content { bottom: 7%; }
-  .hero__sub { font-size: 15px; max-width: 300px; }
+  .hero__sub { font-size: 14px; max-width: 300px; }
 }
 
-/* ─── TRUST BAR ──────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════
+   TRUST BAR
+═══════════════════════════════════════════════════ */
 .trust-bar {
   background: rgba(0,0,0,0.35);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 20px 0;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 18px 0;
 }
 .trust-bar__inner {
-  display: flex; align-items: center;
-  justify-content: center; gap: 44px; flex-wrap: wrap;
+  display: flex; align-items: center; justify-content: center;
+  gap: 36px; flex-wrap: wrap;
 }
 .trust-item {
-  display: flex; align-items: center; gap: 9px;
-  font-family: var(--font-head); font-style: italic;
-  font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--fh); font-style: italic;
+  font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
   color: var(--muted); white-space: nowrap;
 }
-.trust-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--grad); flex-shrink: 0;
-}
-.trust-sep {
-  width: 1px; height: 24px; background: var(--border);
-}
+.trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; }
+.trust-sep { width: 1px; height: 20px; background: var(--border); }
 
-/* ─── PROBLEM ────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════
+   PROBLEM
+═══════════════════════════════════════════════════ */
 .problem { position: relative; overflow: hidden; }
-.problem__grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: center;
+.problem__glow {
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,78,198,0.08) 0%, transparent 70%);
+  top: 50%; right: -80px; transform: translateY(-50%); pointer-events: none;
 }
-.problem__text .section-label { text-align: left; }
-.problem__text .section-headline { text-align: left; }
+.problem__grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
 .problem__body {
-  font-size: 16px; color: rgba(255,255,255,0.6);
-  line-height: 1.75; margin-bottom: 20px;
+  font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 18px;
 }
 .problem__body strong { color: var(--white); }
 .problem__punch {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 20px; letter-spacing: 1px; text-transform: uppercase;
+  font-family: var(--fh); font-style: italic;
+  font-size: 18px; text-transform: uppercase; letter-spacing: 1px;
   background: var(--grad);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: block; margin-top: 28px;
-}
-/* ── Photo card ── */
-.problem__photo-wrap {
-  position: relative;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  display: block; margin-top: 24px;
 }
 .problem__photo {
-  width: 100%; aspect-ratio: 3/4;
   border-radius: 16px; overflow: hidden;
-  border: 1px solid var(--border);
-  position: relative;
+  border: 1px solid var(--border); position: relative; aspect-ratio: 3/4;
 }
-.problem__photo-img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  /* PLACEHOLDER — replace src with joey-training-01.jpg */
-  background: linear-gradient(160deg, #1e1020 0%, #0d080e 100%);
-  display: flex; align-items: center; justify-content: center;
-}
-.problem__photo-img::after {
-  content: '[ joey-training-01.jpg ]';
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.15);
-  border: 1px dashed rgba(255,255,255,0.1); border-radius: 15px;
-  margin: 16px;
+.problem__photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .problem__photo-tag {
-  position: absolute; bottom: 24px; left: 20px; right: 20px;
-  background: rgba(19,12,20,0.88);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(184,78,198,0.2);
-  border-radius: 10px; padding: 16px 20px;
-  border-top: 3px solid var(--accent);
+  position: absolute; bottom: 20px; left: 16px; right: 16px;
+  background: rgba(19,12,20,0.88); backdrop-filter: blur(12px);
+  border: 1px solid rgba(184,78,198,0.2); border-top: 3px solid var(--accent);
+  border-radius: 10px; padding: 14px 18px;
 }
 .problem__photo-tag p {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 16px; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--white); line-height: 1.3;
-}
-.problem__glow {
-  position: absolute; width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(184,78,198,0.09) 0%, transparent 70%);
-  top: 50%; right: -100px; transform: translateY(-50%);
-  pointer-events: none;
+  font-family: var(--fh); font-style: italic;
+  font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--white);
 }
 @media (max-width: 860px) {
   .problem__grid { grid-template-columns: 1fr; }
   .problem__photo { aspect-ratio: 16/9; }
 }
 
-/* ─── PILLARS ────────────────────────────────────────────── */
-.pillars { position: relative; }
-.pillars__header { text-align: center; margin-bottom: 60px; }
+/* ═══════════════════════════════════════════════════
+   PILLARS
+═══════════════════════════════════════════════════ */
+.pillars__header { text-align: center; margin-bottom: 56px; }
 .pillars__grid {
   display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 2px;
-  border: 1px solid var(--border);
-  border-radius: 16px; overflow: hidden;
+  gap: 2px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
 }
 .pillar {
-  background: var(--bg-card);
-  padding: 44px 34px; position: relative;
+  background: var(--bg-card); padding: 40px 30px; position: relative;
   transition: background 0.3s;
 }
 .pillar:hover { background: rgba(30,20,33,0.95); }
@@ -364,686 +280,440 @@ body::after {
 }
 .pillar:hover::before { opacity: 1; }
 .pillar__icon {
-  width: 46px; height: 46px; border-radius: 10px;
-  background: rgba(184,78,198,0.1);
-  border: 1px solid rgba(184,78,198,0.2);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 22px;
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(184,78,198,0.1); border: 1px solid rgba(184,78,198,0.2);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
 }
 .pillar__num {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--accent); display: block; margin-bottom: 10px;
-}
-.pillar__title {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 26px; text-transform: uppercase;
-  color: var(--white); line-height: 1.1; margin-bottom: 14px;
-}
-.pillar__body {
-  font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7;
-}
-@media (max-width: 860px) {
-  .pillars__grid { grid-template-columns: 1fr; }
-}
-
-/* ─── TIERS ──────────────────────────────────────────────── */
-.tiers { position: relative; }
-.tiers__header { text-align: center; margin-bottom: 60px; }
-.tiers__grid {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  gap: 20px; align-items: start;
-}
-.tier-card {
-  background: var(--bg-card); border-radius: 16px;
-  overflow: hidden; border: 1px solid var(--border);
-  position: relative; transition: transform 0.3s, box-shadow 0.3s;
-}
-.tier-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(184,78,198,0.13);
-}
-.tier-card.featured {
-  border-color: rgba(184,78,198,0.3);
-  box-shadow: 0 0 0 1px rgba(184,78,198,0.08);
-}
-.tier-card__bar { height: 5px; background: var(--grad); }
-.tier-card__badge {
-  position: absolute; top: 20px; right: 16px;
-  font-family: var(--font-head); font-style: italic;
-  font-size: 9px; letter-spacing: 2px; font-weight: 700;
-  text-transform: uppercase; color: var(--accent);
-  background: rgba(184,78,198,0.1);
-  border: 1px solid rgba(184,78,198,0.25);
-  padding: 4px 9px; border-radius: 4px;
-}
-.tier-card__body { padding: 30px 26px 34px; }
-.tier-card__num {
-  font-family: var(--font-head); font-style: italic;
+  font-family: var(--fh); font-style: italic;
   font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
   color: var(--accent); display: block; margin-bottom: 8px;
 }
+.pillar__title {
+  font-family: var(--fh); font-style: italic;
+  font-size: 24px; text-transform: uppercase; color: var(--white);
+  line-height: 1.1; margin-bottom: 12px;
+}
+.pillar__body { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+@media (max-width: 860px) { .pillars__grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════════════
+   TIERS
+═══════════════════════════════════════════════════ */
+.tiers__header { text-align: center; margin-bottom: 56px; }
+.tiers__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; align-items: start; }
+.tier-card {
+  background: var(--bg-card); border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border); position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tier-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(184,78,198,0.12); }
+.tier-card.featured { border-color: rgba(184,78,198,0.3); }
+.tier-card__bar { height: 5px; background: var(--grad); }
+.tier-card__badge {
+  position: absolute; top: 20px; right: 16px;
+  font-family: var(--fh); font-style: italic; font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent);
+  background: rgba(184,78,198,0.1); border: 1px solid rgba(184,78,198,0.25);
+  padding: 4px 9px; border-radius: 4px;
+}
+.tier-card__body { padding: 28px 24px 32px; }
+.tier-card__num {
+  font-family: var(--fh); font-style: italic; font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px;
+}
 .tier-card__title {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 24px; text-transform: uppercase;
-  color: var(--white); line-height: 1.1; margin-bottom: 5px;
+  font-family: var(--fh); font-style: italic; font-size: 22px; text-transform: uppercase;
+  color: var(--white); line-height: 1.1; margin-bottom: 4px;
 }
 .tier-card__sub {
-  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--muted); font-family: var(--font-head); font-style: italic;
-  margin-bottom: 18px;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); font-family: var(--fh); font-style: italic; margin-bottom: 16px;
 }
-.tier-card__desc {
-  font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.65;
-  margin-bottom: 22px;
-}
-.tier-card__div { height: 1px; background: var(--border); margin-bottom: 20px; }
-.tier-card__features { margin-bottom: 28px; }
+.tier-card__desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 20px; }
+.tier-card__div { height: 1px; background: var(--border); margin-bottom: 18px; }
+.tier-card__features { margin-bottom: 26px; }
 .tier-card__features li {
   display: flex; align-items: flex-start; gap: 10px;
-  font-size: 14px; color: rgba(255,255,255,0.65);
-  padding: 7px 0; line-height: 1.45;
+  font-size: 13px; color: rgba(255,255,255,0.65); padding: 6px 0; line-height: 1.45;
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .tier-card__features li:last-child { border-bottom: none; }
 .tier-check {
-  width: 17px; height: 17px; min-width: 17px; margin-top: 1px;
-  border-radius: 50%; background: rgba(184,78,198,0.12);
-  border: 1px solid rgba(184,78,198,0.3);
+  width: 16px; height: 16px; min-width: 16px; margin-top: 1px; flex-shrink: 0;
+  border-radius: 50%; background: rgba(184,78,198,0.12); border: 1px solid rgba(184,78,198,0.3);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8l3.5 3.5L13 5' stroke='%23B84EC6' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: center; background-size: 10px;
 }
 .tier-card__cta {
   display: block; width: 100%; text-align: center;
-  font-family: var(--font-head); font-style: italic;
-  font-weight: 700; font-size: 13px;
+  font-family: var(--fh); font-style: italic; font-size: 12px;
   letter-spacing: 2px; text-transform: uppercase;
-  padding: 15px 20px; border-radius: 8px;
-  transition: all 0.25s; cursor: pointer; border: none;
+  padding: 14px 16px; border-radius: 8px; transition: all 0.25s; cursor: pointer; border: none;
 }
-.tier-card__cta--white { background: var(--white); color: var(--accent); }
-.tier-card__cta--white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(184,78,198,0.35); }
-.tier-card__cta--grad { background: var(--grad); color: var(--white); }
-.tier-card__cta--grad:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(184,78,198,0.45); }
-.tier-card__cta--outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.2); }
-.tier-card__cta--outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.cta-white { background: var(--white); color: var(--accent); }
+.cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(184,78,198,0.35); }
+.cta-grad { background: var(--grad); color: var(--white); }
+.cta-grad:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(184,78,198,0.4); }
+.cta-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.2); }
+.cta-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 @media (max-width: 860px) { .tiers__grid { grid-template-columns: 1fr; } }
 
-/* ─── APPLICATION STEPS ──────────────────────────────────── */
+/* ─── APPLICATION STEPS ─────────────────────────── */
 .app-steps {
-  margin-top: 70px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px; overflow: hidden;
+  margin-top: 64px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
 }
-.app-steps__top { height: 4px; background: var(--grad); }
-.app-steps__inner { padding: 44px 48px 48px; }
-.app-steps__label {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
-  color: var(--accent); display: block; margin-bottom: 10px;
+.app-steps__bar { height: 4px; background: var(--grad); }
+.app-steps__inner { padding: 40px 44px 44px; }
+.app-steps__eyebrow {
+  font-family: var(--fh); font-style: italic; font-size: 11px;
+  letter-spacing: 4px; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 8px;
 }
 .app-steps__title {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 28px; text-transform: uppercase; color: var(--white);
-  margin-bottom: 44px;
+  font-family: var(--fh); font-style: italic; font-size: 24px;
+  text-transform: uppercase; color: var(--white); margin-bottom: 40px;
 }
-.steps-flow {
-  display: grid; grid-template-columns: 1fr 60px 1fr 60px 1fr;
-  align-items: center; gap: 0;
-}
+.steps-flow { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; align-items: center; }
 .step-item { text-align: center; }
 .step-num {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: var(--grad); display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-head); font-style: italic;
-  font-size: 22px; font-weight: 700; color: var(--white);
-  margin: 0 auto 18px;
+  width: 52px; height: 52px; border-radius: 50%; background: var(--grad);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
+  font-family: var(--fh); font-style: italic; font-size: 20px; color: var(--white);
   box-shadow: 0 0 24px rgba(184,78,198,0.3);
 }
 .step-title {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 16px; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--white); margin-bottom: 10px;
+  font-family: var(--fh); font-style: italic; font-size: 15px;
+  text-transform: uppercase; letter-spacing: 0.5px; color: var(--white); margin-bottom: 8px;
 }
-.step-body {
-  font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6;
-}
-.step-arrow {
-  display: flex; align-items: center; justify-content: center;
-  padding-bottom: 44px;
-}
-.step-arrow svg { width: 36px; height: 12px; }
-@media (max-width: 740px) {
-  .steps-flow { grid-template-columns: 1fr; }
-  .step-arrow { transform: rotate(90deg); padding: 12px 0; }
-  .app-steps__inner { padding: 32px 24px 36px; }
+.step-body { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.step-arrow { display: flex; align-items: center; justify-content: center; padding-bottom: 40px; }
+.step-arrow svg { width: 32px; }
+@media (max-width: 700px) {
+  .steps-flow { grid-template-columns: 1fr; gap: 8px; }
+  .step-arrow { transform: rotate(90deg); padding: 8px 0; }
+  .app-steps__inner { padding: 28px 20px 32px; }
 }
 
-/* ─── APP SHOWCASE ───────────────────────────────────────── */
-.app-section { position: relative; overflow: hidden; }
-.app-section__glow {
-  position: absolute; width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(184,78,198,0.1) 0%, transparent 65%);
-  top: 50%; left: 40%; transform: translate(-50%, -50%);
-  pointer-events: none;
+/* ═══════════════════════════════════════════════════
+   APP SHOWCASE
+═══════════════════════════════════════════════════ */
+.app-showcase { position: relative; overflow: hidden; }
+.app-glow {
+  position: absolute; width: 650px; height: 650px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,78,198,0.09) 0%, transparent 65%);
+  top: 50%; left: 45%; transform: translate(-50%, -50%); pointer-events: none;
 }
-.app-section__grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center; position: relative; z-index: 1;
+.app-showcase__grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center; position: relative; z-index: 1;
 }
-.app-section__text .section-headline { margin-bottom: 20px; }
-.app-section__body {
-  font-size: 15px; color: rgba(255,255,255,0.58); line-height: 1.75;
-  margin-bottom: 32px;
-}
-.app-bullets { margin-bottom: 36px; }
+.app-body { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 28px; }
+.app-bullets { margin-bottom: 32px; }
 .app-bullet {
-  display: flex; align-items: center; gap: 12px;
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: center; gap: 11px; padding: 8px 0;
   font-size: 14px; color: rgba(255,255,255,0.65);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 .app-bullet:last-child { border-bottom: none; }
-.app-bullet__dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--grad); flex-shrink: 0;
+.ab-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; }
+.app-showcase__mockup {
+  display: flex; justify-content: center; align-items: center; position: relative;
 }
-.app-section__mockup {
-  display: flex; justify-content: center; align-items: center;
-  position: relative;
-}
-.app-section__mockup-glow {
-  position: absolute; width: 350px; height: 350px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(184,78,198,0.18) 0%, transparent 65%);
+.mockup-glow {
+  position: absolute; width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,78,198,0.2) 0%, transparent 65%);
   pointer-events: none;
 }
-.app-section__img {
-  width: 280px; position: relative; z-index: 1;
-  filter: drop-shadow(0 30px 60px rgba(184,78,198,0.25));
-  animation: float 4s ease-in-out infinite;
+.app-showcase__mockup img {
+  width: 260px; position: relative; z-index: 1;
+  filter: drop-shadow(0 30px 60px rgba(184,78,198,0.3));
+  animation: floatY 4s ease-in-out infinite;
 }
-/* PLACEHOLDER for app mockup */
-.app-mockup-placeholder {
-  width: 280px; aspect-ratio: 9/19;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 8px;
-  position: relative; z-index: 1;
-  animation: float 4s ease-in-out infinite;
-}
-.app-mockup-placeholder span {
-  font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.2);
-  text-transform: uppercase;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-@media (max-width: 860px) {
-  .app-section__grid { grid-template-columns: 1fr; }
-  .app-section__mockup { margin-top: 20px; }
-}
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@media (max-width: 860px) { .app-showcase__grid { grid-template-columns: 1fr; } }
 
-/* ─── PROGRAM LIBRARY ────────────────────────────────────── */
-.programs-lib { position: relative; overflow: hidden; }
-.programs-lib__header { text-align: center; margin-bottom: 70px; }
-.programs-lib__subtitle {
-  font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.65;
-  max-width: 480px; margin: 0 auto;
-}
-/* Scattered card grid */
+/* ═══════════════════════════════════════════════════
+   PROGRAM LIBRARY
+═══════════════════════════════════════════════════ */
+.prog-lib__header { text-align: center; margin-bottom: 64px; }
+.prog-lib__sub { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 460px; margin: 10px auto 0; }
 .prog-scatter {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
   max-width: 980px; margin: 0 auto;
 }
 .prog-card {
-  border-radius: 14px; overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s;
-  cursor: pointer;
+  border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+  background: var(--bg-card); cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s, border-color 0.3s;
 }
-/* Alternating rotations — the scattered feel */
 .prog-card:nth-child(1) { transform: rotate(-2.5deg) translateY(8px); }
-.prog-card:nth-child(2) { transform: rotate(1.2deg) translateY(-4px); }
-.prog-card:nth-child(3) { transform: rotate(-1.8deg) translateY(10px); }
-.prog-card:nth-child(4) { transform: rotate(2deg) translateY(-6px); }
-.prog-card:nth-child(5) { transform: rotate(-1deg) translateY(4px); }
-.prog-card:nth-child(6) { transform: rotate(2.5deg) translateY(-8px); }
+.prog-card:nth-child(2) { transform: rotate(1.5deg) translateY(-5px); }
+.prog-card:nth-child(3) { transform: rotate(-2deg) translateY(10px); }
+.prog-card:nth-child(4) { transform: rotate(2deg) translateY(-7px); }
+.prog-card:nth-child(5) { transform: rotate(-1deg) translateY(5px); }
+.prog-card:nth-child(6) { transform: rotate(2.5deg) translateY(-9px); }
 .prog-card:hover {
-  transform: rotate(0deg) translateY(-8px) scale(1.04) !important;
+  transform: rotate(0) translateY(-8px) scale(1.04) !important;
   box-shadow: 0 24px 60px rgba(184,78,198,0.22);
-  border-color: rgba(184,78,198,0.3);
-  z-index: 2; position: relative;
+  border-color: rgba(184,78,198,0.3); z-index: 2; position: relative;
 }
-.prog-card__thumb {
-  width: 100%; aspect-ratio: 16/9;
-  overflow: hidden; position: relative;
-}
-.prog-card__thumb-img {
-  width: 100%; height: 100%; object-fit: cover;
-  background: linear-gradient(135deg, #1a0d1c 0%, #0d080f 100%);
-  transition: transform 0.4s;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: rgba(255,255,255,0.12);
-  letter-spacing: 1.5px; text-transform: uppercase;
-}
-.prog-card:hover .prog-card__thumb-img { transform: scale(1.06); }
+.prog-card__thumb { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; }
+.prog-card__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+.prog-card:hover .prog-card__thumb img { transform: scale(1.06); }
 .prog-card__thumb::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(19,12,20,0.7) 0%, transparent 50%);
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(19,12,20,0.65) 0%, transparent 50%);
 }
-.prog-card__info {
-  padding: 14px 16px 16px;
-  border-top: 3px solid transparent;
-  border-image: var(--grad) 1;
-  border-top-width: 3px;
-}
-/* trick for gradient border-top with border-radius */
-.prog-card__info {
-  position: relative;
-}
+.prog-card__info { padding: 13px 15px 15px; position: relative; }
 .prog-card__info::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--grad);
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad);
 }
 .prog-card__name {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;
-  color: var(--white); margin-bottom: 5px;
+  font-family: var(--fh); font-style: italic; font-size: 14px;
+  text-transform: uppercase; color: var(--white); margin-bottom: 6px;
 }
-.prog-card__meta {
-  display: flex; gap: 8px;
-}
-.prog-card__tag {
-  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+.prog-card__tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.prog-tag {
+  font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
   color: var(--accent); background: rgba(184,78,198,0.1);
-  border: 1px solid rgba(184,78,198,0.2);
-  padding: 3px 8px; border-radius: 4px;
-  font-family: var(--font-head); font-style: italic;
+  border: 1px solid rgba(184,78,198,0.2); padding: 3px 7px; border-radius: 4px;
+  font-family: var(--fh); font-style: italic;
 }
-.programs-lib__cta-row {
-  text-align: center; margin-top: 52px;
-}
-.programs-lib__cta-note {
-  font-size: 13px; color: var(--muted); margin-top: 14px;
-}
-@media (max-width: 740px) {
-  .prog-scatter { grid-template-columns: repeat(2,1fr); gap: 18px; }
+.prog-lib__cta { text-align: center; margin-top: 48px; }
+.prog-lib__note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+@media (max-width: 720px) {
+  .prog-scatter { grid-template-columns: repeat(2,1fr); gap: 16px; }
   .prog-card:nth-child(n) { transform: none; }
 }
-@media (max-width: 480px) {
-  .prog-scatter { grid-template-columns: 1fr; }
-}
+@media (max-width: 480px) { .prog-scatter { grid-template-columns: 1fr; } }
 
-/* ─── ABOUT ──────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════════════ */
 .about { position: relative; overflow: hidden; }
 .about__glow {
-  position: absolute; width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(184,78,198,0.08) 0%, transparent 65%);
-  top: 50%; left: -100px; transform: translateY(-50%);
-  pointer-events: none;
+  position: absolute; width: 550px; height: 550px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,78,198,0.07) 0%, transparent 65%);
+  top: 50%; left: -80px; transform: translateY(-50%); pointer-events: none;
 }
 .about__grid {
-  display: grid; grid-template-columns: 5fr 7fr;
-  gap: 70px; align-items: center; position: relative; z-index: 1;
+  display: grid; grid-template-columns: 5fr 7fr; gap: 64px;
+  align-items: center; position: relative; z-index: 1;
 }
 .about__photo-wrap { position: relative; }
-.about__photo {
-  width: 100%; aspect-ratio: 3/4;
-  border-radius: 16px; overflow: hidden;
-  border: 1px solid var(--border);
-  position: relative;
-}
-.about__photo-img {
-  width: 100%; height: 100%; object-fit: cover;
-  background: linear-gradient(160deg, #1e1020 0%, #0c0810 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; color: rgba(255,255,255,0.12);
-  letter-spacing: 1.5px; text-transform: uppercase;
-  position: relative;
-}
-.about__photo::after {
-  content: '[ joey-about.jpg ]';
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.15);
-  border: 1px dashed rgba(255,255,255,0.08);
-  border-radius: 15px; margin: 14px;
-  pointer-events: none;
-}
-.about__photo-badge {
-  position: absolute; bottom: 20px; left: 20px;
-  background: rgba(19,12,20,0.9); backdrop-filter: blur(12px);
+.about__photo { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 3/4; }
+.about__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about__badge {
+  position: absolute; bottom: 20px; left: 16px;
+  background: rgba(19,12,20,0.92); backdrop-filter: blur(12px);
   border: 1px solid var(--border); border-top: 3px solid var(--accent);
   border-radius: 10px; padding: 14px 18px;
 }
-.about__photo-badge .year {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 36px; line-height: 1; color: var(--white); margin-bottom: 2px;
+.about__badge-year {
+  font-family: var(--fh); font-style: italic; font-size: 34px; line-height: 1; color: var(--white);
 }
-.about__photo-badge .label {
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
-}
-.about__text .section-label { text-align: left; }
-.about__text .section-headline { text-align: left; font-size: clamp(38px, 4.5vw, 56px); }
+.about__badge-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
 .about__name {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 15px; text-transform: uppercase; letter-spacing: 3px;
-  color: var(--accent); display: block; margin-bottom: 22px;
+  font-family: var(--fh); font-style: italic; font-size: 13px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 18px;
 }
-.about__bio {
-  font-size: 15px; color: rgba(255,255,255,0.58); line-height: 1.75;
-  margin-bottom: 32px;
-}
-.about__creds {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-}
+.about__bio { font-size: 15px; color: rgba(255,255,255,0.58); line-height: 1.75; margin-bottom: 28px; }
+.about__creds { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .cred-item {
   display: flex; align-items: flex-start; gap: 10px;
-  background: var(--bg-card);
-  border: 1px solid var(--border); border-radius: 10px;
-  padding: 14px 14px;
-  transition: border-color 0.2s;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px; transition: border-color 0.2s;
 }
 .cred-item:hover { border-color: rgba(184,78,198,0.25); }
-.cred-item__dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--grad); flex-shrink: 0; margin-top: 6px;
-}
-.cred-item span {
-  font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.45;
-}
-@media (max-width: 860px) {
-  .about__grid { grid-template-columns: 1fr; }
-  .about__creds { grid-template-columns: 1fr; }
-}
+.cred-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; margin-top: 6px; }
+.cred-item span { font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.4; }
+@media (max-width: 860px) { .about__grid { grid-template-columns: 1fr; } .about__creds { grid-template-columns: 1fr; } }
 
-/* ─── DISCIPLINES ────────────────────────────────────────── */
-.disciplines { position: relative; overflow: hidden; }
-.disciplines__header { text-align: center; margin-bottom: 64px; }
-.disciplines__sub {
-  font-size: 15px; color: rgba(255,255,255,0.5);
-  max-width: 440px; margin: 12px auto 0;
-}
-.disc-grid {
-  display: flex; flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px 22px;
-  max-width: 900px; margin: 0 auto;
-}
+/* ═══════════════════════════════════════════════════
+   DISCIPLINES
+═══════════════════════════════════════════════════ */
+.disciplines__header { text-align: center; margin-bottom: 60px; }
+.disciplines__sub { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 420px; margin: 10px auto 0; }
+.disc-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 20px; max-width: 860px; margin: 0 auto; }
 .disc-item {
-  border: 1px dashed rgba(255,255,255,0.15);
-  border-radius: 12px;
-  padding: 22px 32px;
-  text-align: center;
+  border: 1px dashed rgba(255,255,255,0.14); border-radius: 12px;
+  padding: 20px 30px; text-align: center; cursor: default;
   transition: border-color 0.3s, background 0.3s, transform 0.3s;
-  cursor: default;
 }
 .disc-item:nth-child(1) { animation: discFloat 5s ease-in-out infinite; }
-.disc-item:nth-child(2) { animation: discFloat 6s ease-in-out 0.5s infinite; }
-.disc-item:nth-child(3) { animation: discFloat 4.5s ease-in-out 1s infinite; }
-.disc-item:nth-child(4) { animation: discFloat 5.5s ease-in-out 0.2s infinite; }
+.disc-item:nth-child(2) { animation: discFloat 5.8s ease-in-out 0.5s infinite; }
+.disc-item:nth-child(3) { animation: discFloat 4.6s ease-in-out 1s infinite; }
+.disc-item:nth-child(4) { animation: discFloat 5.4s ease-in-out 0.3s infinite; }
 .disc-item:nth-child(5) { animation: discFloat 5s ease-in-out 0.8s infinite; }
-.disc-item:hover {
-  border-color: var(--accent);
-  background: rgba(184,78,198,0.07);
-  transform: translateY(-4px) !important;
-  animation-play-state: paused;
-}
-.disc-item__icon {
-  font-size: 28px; display: block; margin-bottom: 12px; line-height: 1;
-}
-.disc-item__name {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 18px; text-transform: uppercase; letter-spacing: 1.5px;
-  color: var(--white);
-}
-.disc-item__sub {
-  font-size: 12px; color: var(--muted); margin-top: 5px; letter-spacing: 1px;
-}
-@keyframes discFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
-}
+.disc-item:hover { border-color: var(--accent); background: rgba(184,78,198,0.06); transform: translateY(-4px) !important; animation-play-state: paused; }
+.disc-icon { font-size: 26px; display: block; margin-bottom: 10px; }
+.disc-name { font-family: var(--fh); font-style: italic; font-size: 17px; text-transform: uppercase; letter-spacing: 1px; color: var(--white); }
+.disc-sub { font-size: 11px; color: var(--muted); margin-top: 4px; letter-spacing: 1px; }
+@keyframes discFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 
-/* ─── TESTIMONIALS ───────────────────────────────────────── */
-.testimonials { position: relative; }
-.testimonials__header { text-align: center; margin-bottom: 60px; }
-/* Grid: auto-fit so adding more cards naturally expands to 4, 5, etc.
-   Just copy-paste a .testi-card block to add more testimonials */
-.testi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 22px;
-}
+/* ═══════════════════════════════════════════════════
+   TESTIMONIALS
+   To add more: copy one .testi-card and paste inside .testi-grid
+═══════════════════════════════════════════════════ */
+.testi__header { text-align: center; margin-bottom: 56px; }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
 .testi-card {
-  background: var(--bg-card);
-  border-radius: 14px; overflow: hidden;
-  border: 1px solid var(--border);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: var(--bg-card); border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s;
 }
 .testi-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(184,78,198,0.1); }
 .testi-card__bar { height: 4px; background: var(--grad); }
-.testi-card__body { padding: 28px 24px; }
-.testi-card__meta {
-  display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
-}
-/* Avatar placeholder — replace src with testimonial-[name].jpg */
+.testi-card__body { padding: 24px 22px; }
+.testi-card__meta { display: flex; align-items: center; gap: 13px; margin-bottom: 16px; }
 .testi-card__avatar {
-  width: 50px; height: 50px; border-radius: 50%; overflow: hidden;
+  width: 48px; height: 48px; border-radius: 50%; overflow: hidden;
   border: 2px solid rgba(184,78,198,0.3); flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(184,78,198,0.2), rgba(152,102,201,0.2));
+  background: rgba(184,78,198,0.1);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-head); font-style: italic;
-  font-size: 18px; font-weight: 700; color: var(--white);
+  font-family: var(--fh); font-style: italic; font-size: 18px; color: var(--white);
 }
-.testi-card__avatar img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-}
-.testi-card__name {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 18px; text-transform: uppercase; letter-spacing: 1px; color: var(--white);
-}
-.testi-card__sport {
-  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent);
-}
-.testi-card__stars {
-  display: flex; gap: 3px; margin-bottom: 14px;
-}
-.testi-card__stars span { color: var(--accent); font-size: 13px; }
+.testi-card__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.testi-card__name { font-family: var(--fh); font-style: italic; font-size: 17px; text-transform: uppercase; color: var(--white); }
+.testi-card__sport { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
+.testi-card__stars { display: flex; gap: 3px; margin-bottom: 12px; }
+.testi-card__stars span { color: var(--accent); font-size: 12px; }
 .testi-card__quote {
-  font-size: 14px; color: rgba(255,255,255,0.58); line-height: 1.75;
-  font-style: italic;
+  font-size: 14px; color: rgba(255,255,255,0.58); line-height: 1.75; font-style: italic;
+  padding-left: 12px; border-left: 2px solid rgba(184,78,198,0.3);
 }
-.testi-card__quote::before { content: '"'; color: var(--accent); font-size: 18px; font-style: normal; }
-.testi-card__quote::after  { content: '"'; color: var(--accent); font-size: 18px; font-style: normal; }
 
-/* ─── FAQ ────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════════ */
 .faq { position: relative; }
 .faq__glow {
-  position: absolute; width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(184,78,198,0.07) 0%, transparent 65%);
-  bottom: -100px; right: -100px; pointer-events: none;
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,78,198,0.06) 0%, transparent 65%);
+  bottom: -80px; right: -80px; pointer-events: none;
 }
-.faq__header { text-align: center; margin-bottom: 56px; }
-.faq__list { max-width: 760px; margin: 0 auto; }
-.faq-item {
-  border: 1px solid var(--border);
-  border-radius: 12px; margin-bottom: 12px;
-  overflow: hidden;
-  transition: border-color 0.2s;
-}
+.faq__header { text-align: center; margin-bottom: 52px; }
+.faq__list { max-width: 740px; margin: 0 auto; }
+.faq-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.2s; }
 .faq-item.open { border-color: rgba(184,78,198,0.25); }
-.faq-item__q {
+.faq-q {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 26px; cursor: pointer;
-  background: var(--bg-card);
-  transition: background 0.2s;
+  padding: 20px 24px; cursor: pointer; background: var(--bg-card); transition: background 0.2s;
 }
-.faq-item__q:hover { background: rgba(30,20,33,0.9); }
-.faq-item__q-text {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 17px; text-transform: uppercase; letter-spacing: 0.5px;
-  color: var(--white);
+.faq-q:hover { background: rgba(30,20,33,0.9); }
+.faq-q-text {
+  font-family: var(--fh); font-style: italic; font-size: 16px;
+  text-transform: uppercase; letter-spacing: 0.3px; color: var(--white);
 }
-.faq-item__icon {
-  width: 28px; height: 28px; border-radius: 50%;
+.faq-icon {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
   background: rgba(184,78,198,0.1); border: 1px solid rgba(184,78,198,0.2);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
   transition: transform 0.3s, background 0.2s;
 }
-.faq-item.open .faq-item__icon {
-  transform: rotate(45deg);
-  background: var(--accent);
-  border-color: var(--accent);
-}
-.faq-item__icon svg { width: 14px; height: 14px; }
-.faq-item__a {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  background: rgba(28,20,29,0.6);
-}
-.faq-item.open .faq-item__a { max-height: 300px; padding: 0 26px 22px; }
-.faq-item__a-text {
-  font-size: 15px; color: rgba(255,255,255,0.58); line-height: 1.75;
-  padding-top: 16px;
-}
-@media (max-width: 600px) { .faq-item__q { padding: 18px 18px; } }
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: rgba(28,20,29,0.6); }
+.faq-item.open .faq-a { max-height: 280px; }
+.faq-a-text { font-size: 14px; color: rgba(255,255,255,0.58); line-height: 1.75; padding: 0 24px 20px; margin-top: 14px; }
 
-/* ─── FINAL CTA ──────────────────────────────────────────── */
-.final-cta {
-  position: relative; overflow: hidden;
-  padding: 140px 0;
-}
+/* ═══════════════════════════════════════════════════
+   FINAL CTA
+═══════════════════════════════════════════════════ */
+.final-cta { position: relative; overflow: hidden; padding: 130px 0; }
 .final-cta__bg {
   position: absolute; inset: 0;
   background-image: url('joey-cta-bg.jpg');
   background-size: cover; background-position: center;
-  /* PLACEHOLDER until joey-cta-bg.jpg is uploaded */
-  background-color: #0a060c;
 }
 .final-cta__bg::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(19,12,20,0.6) 0%,
-    rgba(19,12,20,0.75) 50%,
-    rgba(19,12,20,0.9) 100%);
-}
-.final-cta__overlay-label {
-  content: '[ joey-cta-bg.jpg — full bleed background ]';
-  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
-  font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.1);
-  border: 1px dashed rgba(255,255,255,0.08); padding: 6px 14px;
-  border-radius: 4px; white-space: nowrap; z-index: 2;
-  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(19,12,20,0.55) 0%, rgba(19,12,20,0.8) 60%, rgba(19,12,20,0.95) 100%);
 }
 .final-cta__content {
   position: relative; z-index: 2;
-  text-align: center; max-width: 660px; margin: 0 auto; padding: 0 28px;
+  text-align: center; max-width: 620px; margin: 0 auto; padding: 0 28px;
 }
 .final-cta__eyebrow {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
-  color: var(--accent); display: block; margin-bottom: 16px;
+  font-family: var(--fh); font-style: italic; font-size: 11px;
+  letter-spacing: 4px; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 14px;
 }
 .final-cta__headline {
-  font-family: var(--font-head); font-style: italic;
-  font-size: clamp(42px, 6vw, 72px); text-transform: uppercase;
-  line-height: 1; color: var(--white); margin-bottom: 20px;
-}
-.final-cta__body {
-  font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7;
-  margin-bottom: 40px;
-}
-.btn-mega {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 15px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 20px 52px; background: var(--grad); color: var(--white);
-  border-radius: 8px; border: none; cursor: pointer;
-  display: inline-block;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.btn-mega:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(184,78,198,0.45); }
-
-/* ─── FOOTER ─────────────────────────────────────────────── */
-.footer {
-  border-top: 1px solid var(--border);
-  padding: 60px 0 36px;
-  background: rgba(0,0,0,0.4);
-}
-.footer__inner {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 48px; margin-bottom: 48px;
-}
-.footer__brand-logo {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
-}
-.footer__brand p { font-size: 13px; color: var(--muted); line-height: 1.65; max-width: 230px; }
-.footer__col-title {
-  font-family: var(--font-head); font-style: italic;
-  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  font-family: var(--fh); font-style: italic;
+  font-size: clamp(38px, 5.5vw, 62px); text-transform: uppercase; line-height: 1.05;
   color: var(--white); margin-bottom: 18px;
 }
-.footer__links { display: flex; flex-direction: column; gap: 10px; }
-.footer__links a { font-size: 13px; color: var(--muted); transition: color 0.2s; letter-spacing: 0.5px; }
-.footer__links a:hover { color: var(--white); }
-.footer__socials { display: flex; gap: 10px; flex-wrap: wrap; }
-.social-btn {
-  width: 38px; height: 38px; border-radius: 7px;
-  background: var(--bg-card); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-head); font-style: italic;
-  font-size: 11px; letter-spacing: 1px; color: var(--muted);
-  transition: border-color 0.2s, color 0.2s;
+.final-cta__body { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 36px; }
+
+/* ═══════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════ */
+.footer { border-top: 1px solid var(--border); padding: 56px 0 32px; background: rgba(0,0,0,0.4); }
+.footer__inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+.footer__brand-logo img { height: 52px; width: auto; margin-bottom: 14px; display: block; }
+.footer__brand p { font-size: 13px; color: var(--muted); line-height: 1.65; max-width: 220px; }
+.footer__col-title {
+  font-family: var(--fh); font-style: italic; font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--white); margin-bottom: 16px;
 }
-.social-btn:hover { border-color: var(--accent); color: var(--accent); }
+.footer__links { display: flex; flex-direction: column; gap: 9px; }
+.footer__links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+.footer__links a:hover { color: var(--white); }
+/* Social icons: gradient bg, white SVG */
+.footer__socials { display: flex; gap: 10px; }
+.social-btn {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, opacity 0.2s; flex-shrink: 0;
+}
+.social-btn:hover { transform: translateY(-2px); opacity: 0.85; }
+.social-btn svg { width: 18px; height: 18px; fill: white; }
 .footer__bottom {
   display: flex; align-items: center; justify-content: space-between;
-  padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px;
+  padding-top: 24px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 10px;
 }
-.footer__copy { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
-.footer__legal { display: flex; gap: 24px; }
-.footer__legal a { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.2s; }
+.footer__copy { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.footer__legal { display: flex; gap: 20px; }
+.footer__legal a { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s; }
 .footer__legal a:hover { color: var(--white); }
 @media (max-width: 860px) { .footer__inner { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .footer__inner { grid-template-columns: 1fr; } }
 
-/* ─── REVEAL ANIMATIONS ──────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(26px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.reveal {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
+/* ─── ANIMATIONS + REVEAL ───────────────────────── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-d1 { transition-delay: 0.1s; }
-.reveal-d2 { transition-delay: 0.2s; }
-.reveal-d3 { transition-delay: 0.3s; }
-.reveal-d4 { transition-delay: 0.4s; }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+/* ─── GLOBAL RESPONSIVE ─────────────────────────── */
+@media (max-width: 640px) {
+  .sp { padding: 72px 0; }
+  .nav__links, .nav__cta { display: none; }
+  .nav__hamburger { display: flex; }
+  .trust-sep { display: none; }
+  .hero__actions { flex-direction: column; align-items: center; }
+  .app-steps__inner { padding: 24px 18px 28px; }
+  .footer__bottom { flex-direction: column; text-align: center; }
+}
 </style>
 </head>
-
 <body>
 
-<!-- ═══════════════════════════════════════════════════════
-     NAV
-══════════════════════════════════════════════════════════ -->
+<!-- ═══ MOBILE MENU ══════════════════════════════════════ -->
+<div class="nav__mobile-menu" id="mobileMenu">
+  <button class="nav__mobile-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#programs" onclick="closeMobileMenu()">Programs</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#results" onclick="closeMobileMenu()">Results</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#final-cta" onclick="closeMobileMenu()" style="background:var(--grad);padding:14px 32px;border-radius:8px;font-size:16px;">Apply Now</a>
+</div>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════ -->
 <nav class="nav" id="nav">
   <div class="nav__inner">
     <a href="#" class="nav__logo">
-      <div class="nav__logo-mark">SZ</div>
-      <span class="nav__logo-name">Szat Strength</span>
+      <img src="szat-Logo.png" alt="Szat Strength">
     </a>
     <ul class="nav__links">
       <li><a href="#programs">Programs</a></li>
@@ -1052,19 +722,16 @@ body::after {
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="#final-cta" class="nav__cta">Apply Now</a>
+    <button class="nav__hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════════
-     HERO
-     Background image carries the headline text.
-     Only subtext + CTAs are HTML here.
-══════════════════════════════════════════════════════════ -->
+<!-- ═══ HERO ═══════════════════════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero__content">
-    <p class="hero__sub">
-      Stop spinning your wheels with generic templates. Train with a professional system built for high-level strength — and the accountability to back it up.
-    </p>
+    <p class="hero__sub">Stop spinning your wheels with generic templates. Train with a professional system built for high-level strength — and the accountability to back it up.</p>
     <div class="hero__actions">
       <a href="#programs" class="btn-primary">View Coaching Programs</a>
       <a href="#app" class="btn-secondary">Get the App</a>
@@ -1072,9 +739,7 @@ body::after {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     TRUST BAR
-══════════════════════════════════════════════════════════ -->
+<!-- ═══ TRUST BAR ══════════════════════════════════════════ -->
 <div class="trust-bar">
   <div class="container">
     <div class="trust-bar__inner">
@@ -1087,152 +752,125 @@ body::after {
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     THE PROBLEM
-     Photo: joey-training-01.jpg
-══════════════════════════════════════════════════════════ -->
-<section class="problem section-pad" id="problem">
+<!-- ═══ PROBLEM ════════════════════════════════════════════ -->
+<section class="problem sp" id="problem">
   <div class="problem__glow"></div>
   <div class="container">
     <div class="problem__grid">
-
-      <div class="problem__text">
+      <div>
         <span class="section-label reveal">The Problem</span>
-        <h2 class="section-headline reveal reveal-d1">
-          Hard Work Without Structure Is Just <span class="grad-text">Wasted Energy.</span>
-        </h2>
-        <p class="problem__body reveal reveal-d2">
-          You're training hard, but your numbers haven't moved in months. You're following <strong>"influencer" programs</strong> that weren't built for your goals, your schedule, or your injury history.
-        </p>
-        <p class="problem__body reveal reveal-d2">
-          Generic templates don't account for your equipment, your recovery, or where you actually are. They're built for nobody — which means they work for nobody.
-        </p>
-        <span class="problem__punch reveal reveal-d3">You don't need more motivation. You need a better system.</span>
+        <h2 class="sh reveal d1">Hard Work Without Structure Is <span class="grad-text">Wasted Energy.</span></h2>
+        <p class="problem__body reveal d2">You're training hard, but your numbers haven't moved in months. You're following <strong>"influencer" programs</strong> that weren't built for your goals, your schedule, or your injury history.</p>
+        <p class="problem__body reveal d2">Generic templates don't account for your equipment, your recovery, or where you actually are. They're built for nobody.</p>
+        <span class="problem__punch reveal d3">You don't need more motivation. You need a better system.</span>
       </div>
-
-      <div class="problem__photo-wrap reveal reveal-d2">
+      <div class="reveal d2">
         <div class="problem__photo">
-          <!-- PLACEHOLDER: replace this div with:
-               <img src="joey-training-01.jpg" alt="Coach Joey training" style="width:100%;height:100%;object-fit:cover;">
-          -->
-          <div class="problem__photo-img"></div>
-        </div>
-        <div class="problem__photo-tag">
-          <p>The System That Separates Athletes From Lifters.</p>
+          <img src="joey-training-01.jpg" alt="Coach Joey training">
+          <div class="problem__photo-tag">
+            <p>The System That Separates Athletes From Lifters.</p>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     THE SZAT STRENGTH SYSTEM
-══════════════════════════════════════════════════════════ -->
-<section class="pillars section-pad" id="system">
+<!-- ═══ PILLARS ════════════════════════════════════════════ -->
+<section class="sp" id="system">
   <div class="container">
     <div class="pillars__header">
       <span class="section-label reveal">The Szat Strength System</span>
-      <h2 class="section-headline reveal reveal-d1">Three Non-Negotiable <span class="grad-text">Pillars.</span></h2>
+      <h2 class="sh reveal d1">Three Non-Negotiable <span class="grad-text">Pillars.</span></h2>
     </div>
     <div class="pillars__grid">
-
       <div class="pillar reveal">
         <div class="pillar__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B84EC6" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8-8 8M12 4l8 8-8 8"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B84EC6" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8-8 8M12 4l8 8-8 8"/></svg>
         </div>
         <span class="pillar__num">Pillar 01</span>
-        <h3 class="pillar__title">Adaptive<br>Programming</h3>
-        <p class="pillar__body">Static PDFs don't work. Your training adjusts based on your recovery, your life, and your actual progress — not a generic 12-week calendar.</p>
+        <h3 class="pillar__title">Adaptive Programming</h3>
+        <p class="pillar__body">Your training adjusts based on your recovery, your life, and your actual progress — not a generic calendar.</p>
       </div>
-
-      <div class="pillar reveal reveal-d1">
+      <div class="pillar reveal d1">
         <div class="pillar__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B84EC6" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B84EC6" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
         </div>
         <span class="pillar__num">Pillar 02</span>
-        <h3 class="pillar__title">Technical<br>Precision</h3>
-        <p class="pillar__body">Strength is a skill. We focus on form and efficiency to make sure every rep builds muscle without breaking your body down.</p>
+        <h3 class="pillar__title">Technical Precision</h3>
+        <p class="pillar__body">Strength is a skill. We focus on form and efficiency so every rep builds muscle without breaking your body.</p>
       </div>
-
-      <div class="pillar reveal reveal-d2">
+      <div class="pillar reveal d2">
         <div class="pillar__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B84EC6" stroke-width="1.8" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B84EC6" stroke-width="1.8" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
         <span class="pillar__num">Pillar 03</span>
-        <h3 class="pillar__title">Radical<br>Accountability</h3>
-        <p class="pillar__body">We don't guess if you're getting stronger. We track the metrics inside the app and prove it — every block, every week.</p>
+        <h3 class="pillar__title">Radical Accountability</h3>
+        <p class="pillar__body">We don't guess if you're getting stronger. We track the metrics inside the app and prove it every week.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     CHOOSE YOUR LEVEL — PROGRAMS
-══════════════════════════════════════════════════════════ -->
-<section class="tiers section-pad" id="programs">
+<!-- ═══ TIERS ══════════════════════════════════════════════ -->
+<section class="sp" id="programs">
   <div class="container">
     <div class="tiers__header">
-      <span class="section-label reveal">Choose Your Level of Intensity</span>
-      <h2 class="section-headline reveal reveal-d1">One System. <span class="grad-text">Three Paths.</span></h2>
+      <span class="section-label reveal">Choose Your Level</span>
+      <h2 class="sh reveal d1">One System. <span class="grad-text">Three Paths.</span></h2>
     </div>
-
     <div class="tiers__grid">
 
-      <!-- TIER 01: 1:1 COACHING -->
       <div class="tier-card reveal">
         <div class="tier-card__bar"></div>
         <div class="tier-card__body">
           <span class="tier-card__num">Tier 01</span>
           <h3 class="tier-card__title">Custom Performance Coaching</h3>
           <p class="tier-card__sub">1:1 Premium Support</p>
-          <p class="tier-card__desc">A full-scale partnership. I handle the programming, the logic, and the adjustments — you handle the work. Zero guesswork. Maximum accountability.</p>
+          <p class="tier-card__desc">Full-scale partnership. I handle the programming and adjustments — you handle the work. Zero guesswork.</p>
           <div class="tier-card__div"></div>
           <ul class="tier-card__features">
-            <li><span class="tier-check"></span>Custom Technical Roadmap built for your equipment, schedule, and weaknesses</li>
-            <li><span class="tier-check"></span>Weekly Form Analysis — send footage directly for surgical corrections</li>
-            <li><span class="tier-check"></span>Performance Fueling with clear nutritional & supplement logic</li>
-            <li><span class="tier-check"></span>Direct Access through the private coaching portal for real-time adjustments</li>
+            <li><span class="tier-check"></span>Custom roadmap built for your equipment & schedule</li>
+            <li><span class="tier-check"></span>Weekly form analysis — send footage for corrections</li>
+            <li><span class="tier-check"></span>Performance fueling & supplement logic</li>
+            <li><span class="tier-check"></span>Direct access via private coaching portal</li>
           </ul>
-          <a href="#final-cta" class="tier-card__cta tier-card__cta--white">Apply for 1:1 Coaching</a>
+          <a href="#final-cta" class="tier-card__cta cta-white">Apply for 1:1 Coaching</a>
         </div>
       </div>
 
-      <!-- TIER 02: THE COLLECTIVE (FEATURED) -->
-      <div class="tier-card featured reveal reveal-d1">
+      <div class="tier-card featured reveal d1">
         <div class="tier-card__bar"></div>
         <span class="tier-card__badge">Most Popular</span>
         <div class="tier-card__body">
           <span class="tier-card__num">Tier 02</span>
           <h3 class="tier-card__title">The Strength Collective</h3>
-          <p class="tier-card__sub">Group Programming & Accountability</p>
-          <p class="tier-card__desc">Follow the same high-level programming as a community of like-minded athletes. You aren't training alone — you're training with a team.</p>
+          <p class="tier-card__sub">Group Programming</p>
+          <p class="tier-card__desc">High-level programming delivered as a community. You aren't training alone — you're training with a team.</p>
           <div class="tier-card__div"></div>
           <ul class="tier-card__features">
-            <li><span class="tier-check"></span>The Collective Program — new training blocks delivered weekly via the app</li>
-            <li><span class="tier-check"></span>The Community Board — real-time chat to share wins and keep intensity high</li>
-            <li><span class="tier-check"></span>Expert Q&A — regular access for technical hurdles and plateaus</li>
+            <li><span class="tier-check"></span>New training blocks delivered weekly via the app</li>
+            <li><span class="tier-check"></span>Community board — share wins, stay accountable</li>
+            <li><span class="tier-check"></span>Expert Q&A for technical hurdles & plateaus</li>
           </ul>
-          <a href="#final-cta" class="tier-card__cta tier-card__cta--grad">Join the Collective</a>
+          <a href="#final-cta" class="tier-card__cta cta-grad">Join the Collective</a>
         </div>
       </div>
 
-      <!-- TIER 03: TRAINING VAULT -->
-      <div class="tier-card reveal reveal-d2">
+      <div class="tier-card reveal d2">
         <div class="tier-card__bar"></div>
         <div class="tier-card__body">
           <span class="tier-card__num">Tier 03</span>
           <h3 class="tier-card__title">The Training Vault</h3>
-          <p class="tier-card__sub">On-Demand Program Library</p>
-          <p class="tier-card__desc">Perfect for the autonomous athlete. Instant access to every specialized program I've ever built — follow them at your own pace.</p>
+          <p class="tier-card__sub">On-Demand Library</p>
+          <p class="tier-card__desc">Instant access to every specialized program I've built. Follow them at your own pace.</p>
           <div class="tier-card__div"></div>
           <ul class="tier-card__features">
-            <li><span class="tier-check"></span>Full Library Access — Strongman, Powerlifting, and General Strength programs</li>
-            <li><span class="tier-check"></span>Tactical Resource Vault — nutritional guides, mobility routines, goal tools</li>
-            <li><span class="tier-check"></span>Total Flexibility — switch programs as your goals evolve</li>
+            <li><span class="tier-check"></span>Full library — Strongman, Powerlifting, Strength</li>
+            <li><span class="tier-check"></span>Nutritional guides, mobility & goal-tracking tools</li>
+            <li><span class="tier-check"></span>Switch programs freely as your goals evolve</li>
           </ul>
-          <a href="#app" class="tier-card__cta tier-card__cta--outline">Start Free App Trial</a>
+          <a href="#app" class="tier-card__cta cta-outline">Start Free App Trial</a>
         </div>
       </div>
 
@@ -1240,46 +878,32 @@ body::after {
 
     <!-- APPLICATION STEPS -->
     <div class="app-steps reveal">
-      <div class="app-steps__top"></div>
+      <div class="app-steps__bar"></div>
       <div class="app-steps__inner">
-        <span class="app-steps__label">Ready for 1:1 Coaching?</span>
-        <h3 class="app-steps__title">How It Works — Three Steps to Get Started</h3>
+        <span class="app-steps__eyebrow">Ready for 1:1 Coaching?</span>
+        <h3 class="app-steps__title">Three Steps to Get Started</h3>
         <div class="steps-flow">
-
           <div class="step-item">
             <div class="step-num">01</div>
             <div class="step-title">Submit Your Application</div>
-            <p class="step-body">Click "Apply Now" and fill out the short questionnaire. Tell us your goals, your training history, and what's holding you back.</p>
+            <p class="step-body">Click "Apply Now" and fill out the short questionnaire. Tell us your goals and training history.</p>
           </div>
-
           <div class="step-arrow">
-            <svg viewBox="0 0 36 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="0" y1="6" x2="28" y2="6" stroke="url(#ag)" stroke-width="1.5"/>
-              <path d="M26 2l6 4-6 4" stroke="url(#ag)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-              <defs><linearGradient id="ag" x1="0" y1="0" x2="36" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#BE4AC5"/><stop offset="1" stop-color="#9866C9"/></linearGradient></defs>
-            </svg>
+            <svg viewBox="0 0 32 12" fill="none"><line x1="0" y1="6" x2="24" y2="6" stroke="url(#ga)" stroke-width="1.5"/><path d="M22 2l6 4-6 4" stroke="url(#ga)" stroke-width="1.5" fill="none" stroke-linecap="round"/><defs><linearGradient id="ga" x1="0" y1="0" x2="32" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#BE4AC5"/><stop offset="1" stop-color="#9866C9"/></linearGradient></defs></svg>
           </div>
-
           <div class="step-item">
             <div class="step-num">02</div>
             <div class="step-title">We Review & Reach Out</div>
-            <p class="step-body">Our team reviews your information and gets back to you within 24 hours via email, phone, or text to discuss fit and next steps.</p>
+            <p class="step-body">Our team reviews your info and gets back within 24 hours via email, phone, or text.</p>
           </div>
-
           <div class="step-arrow">
-            <svg viewBox="0 0 36 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="0" y1="6" x2="28" y2="6" stroke="url(#ag2)" stroke-width="1.5"/>
-              <path d="M26 2l6 4-6 4" stroke="url(#ag2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-              <defs><linearGradient id="ag2" x1="0" y1="0" x2="36" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#BE4AC5"/><stop offset="1" stop-color="#9866C9"/></linearGradient></defs>
-            </svg>
+            <svg viewBox="0 0 32 12" fill="none"><line x1="0" y1="6" x2="24" y2="6" stroke="url(#gb)" stroke-width="1.5"/><path d="M22 2l6 4-6 4" stroke="url(#gb)" stroke-width="1.5" fill="none" stroke-linecap="round"/><defs><linearGradient id="gb" x1="0" y1="0" x2="32" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#BE4AC5"/><stop offset="1" stop-color="#9866C9"/></linearGradient></defs></svg>
           </div>
-
           <div class="step-item">
             <div class="step-num">03</div>
-            <div class="step-title">Kickoff Call & Get to Work</div>
-            <p class="step-body">Once approved, we schedule your kickoff call, build your custom roadmap, and get to work. Day one starts here.</p>
+            <div class="step-title">Kickoff & Get to Work</div>
+            <p class="step-body">Once approved, we schedule your kickoff call, build your roadmap, and start day one.</p>
           </div>
-
         </div>
       </div>
     </div>
@@ -1287,420 +911,243 @@ body::after {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     THE APP SHOWCASE
-     Mockup: app-mockup.png
-══════════════════════════════════════════════════════════ -->
-<section class="app-section section-pad" id="app">
-  <div class="app-section__glow"></div>
+<!-- ═══ APP SHOWCASE ═══════════════════════════════════════ -->
+<section class="app-showcase sp" id="app">
+  <div class="app-glow"></div>
   <div class="container">
-    <div class="app-section__grid">
-
-      <div class="app-section__text">
-        <span class="section-label reveal">Modern Technology for Better Results</span>
-        <h2 class="section-headline reveal reveal-d1">Train Smarter.<br><span class="grad-text">Not Harder.</span></h2>
-        <p class="app-section__body reveal reveal-d2">Our services are delivered on modern software built specifically for the serious athlete. Every program, every metric, every coaching interaction — all in one place.</p>
-        <div class="app-bullets reveal reveal-d2">
-          <div class="app-bullet"><span class="app-bullet__dot"></span>Full program library with unlimited access</div>
-          <div class="app-bullet"><span class="app-bullet__dot"></span>Recommended sets, reps & demo videos per exercise</div>
-          <div class="app-bullet"><span class="app-bullet__dot"></span>Progress tracking and performance analytics</div>
-          <div class="app-bullet"><span class="app-bullet__dot"></span>Private community board & direct coach messaging</div>
+    <div class="app-showcase__grid">
+      <div>
+        <span class="section-label reveal">Modern Tech for Better Results</span>
+        <h2 class="sh reveal d1">Train Smarter.<br><span class="grad-text">Not Harder.</span></h2>
+        <p class="app-body reveal d2">Built specifically for the serious athlete. Every program, metric, and coaching interaction — all in one place.</p>
+        <div class="app-bullets reveal d2">
+          <div class="app-bullet"><span class="ab-dot"></span>Full program library with unlimited access</div>
+          <div class="app-bullet"><span class="ab-dot"></span>Recommended sets, reps & demo videos</div>
+          <div class="app-bullet"><span class="ab-dot"></span>Progress tracking & performance analytics</div>
+          <div class="app-bullet"><span class="ab-dot"></span>Private community board & coach messaging</div>
         </div>
-        <div class="reveal reveal-d3">
-          <a href="#" class="btn-primary">Start Free Trial</a>
-        </div>
+        <div class="reveal d3"><a href="#" class="btn-primary">Start Free Trial</a></div>
       </div>
-
-      <div class="app-section__mockup reveal reveal-d2">
-        <div class="app-section__mockup-glow"></div>
-        <!-- PLACEHOLDER: replace with <img src="app-mockup.png" alt="Szat Strength App" class="app-section__img"> -->
-        <div class="app-mockup-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(184,78,198,0.4)" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg>
-          <span>app-mockup.png</span>
-        </div>
+      <div class="app-showcase__mockup reveal d2">
+        <div class="mockup-glow"></div>
+        <img src="app-mockup.png" alt="Szat Strength Training App">
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     PROGRAM LIBRARY
-     Thumbnails: program-01.jpg through program-06.jpg (16:9)
-     Add program name/type in the .prog-card__name field below
-══════════════════════════════════════════════════════════ -->
-<section class="programs-lib section-pad" id="library">
+<!-- ═══ PROGRAM LIBRARY ════════════════════════════════════ -->
+<section class="sp" id="library">
   <div class="container">
-    <div class="programs-lib__header">
+    <div class="prog-lib__header">
       <span class="section-label reveal">The Training Vault</span>
-      <h2 class="section-headline reveal reveal-d1">Every Program.<br><span class="grad-text">One Subscription.</span></h2>
-      <p class="programs-lib__subtitle reveal reveal-d2">Subscribe to the Szat Strength Training App and get unlimited access to every program — plus the community and tools to go with it.</p>
+      <h2 class="sh reveal d1">Every Program.<br><span class="grad-text">One Subscription.</span></h2>
+      <p class="prog-lib__sub reveal d2">Subscribe to the Szat Strength App for unlimited access to every program, the community, and the tools to go with it.</p>
     </div>
-
     <div class="prog-scatter">
-
-      <!-- Card 1 — program-01.jpg -->
       <div class="prog-card reveal">
-        <div class="prog-card__thumb">
-          <!-- PLACEHOLDER: <img src="program-01.jpg" alt="Program name"> -->
-          <div class="prog-card__thumb-img">program-01.jpg</div>
-        </div>
+        <div class="prog-card__thumb"><img src="program-01.jpg" alt="Strongman 6 Days"></div>
         <div class="prog-card__info">
           <div class="prog-card__name">Strongman — 6 Days/Week</div>
-          <div class="prog-card__meta">
-            <span class="prog-card__tag">10 Weeks</span>
-            <span class="prog-card__tag">6 Sessions</span>
-          </div>
+          <div class="prog-card__tags"><span class="prog-tag">10 Weeks</span><span class="prog-tag">6 Sessions</span></div>
         </div>
       </div>
-
-      <!-- Card 2 — program-02.jpg -->
-      <div class="prog-card reveal reveal-d1">
-        <div class="prog-card__thumb">
-          <div class="prog-card__thumb-img">program-02.jpg</div>
-        </div>
+      <div class="prog-card reveal d1">
+        <div class="prog-card__thumb"><img src="program-02.jpg" alt="Combat Sports"></div>
         <div class="prog-card__info">
           <div class="prog-card__name">Combat Sports — BJJ/MMA</div>
-          <div class="prog-card__meta">
-            <span class="prog-card__tag">14 Weeks</span>
-            <span class="prog-card__tag">4 Sessions</span>
-          </div>
+          <div class="prog-card__tags"><span class="prog-tag">14 Weeks</span><span class="prog-tag">4 Sessions</span></div>
         </div>
       </div>
-
-      <!-- Card 3 — program-03.jpg -->
-      <div class="prog-card reveal reveal-d2">
-        <div class="prog-card__thumb">
-          <div class="prog-card__thumb-img">program-03.jpg</div>
-        </div>
+      <div class="prog-card reveal d2">
+        <div class="prog-card__thumb"><img src="program-03.jpg" alt="Hypertrophy"></div>
         <div class="prog-card__info">
           <div class="prog-card__name">Hypertrophy — 6 Days/Week</div>
-          <div class="prog-card__meta">
-            <span class="prog-card__tag">10 Weeks</span>
-            <span class="prog-card__tag">6 Sessions</span>
-          </div>
+          <div class="prog-card__tags"><span class="prog-tag">10 Weeks</span><span class="prog-tag">6 Sessions</span></div>
         </div>
       </div>
-
-      <!-- Card 4 — program-04.jpg -->
-      <div class="prog-card reveal reveal-d1">
-        <div class="prog-card__thumb">
-          <div class="prog-card__thumb-img">program-04.jpg</div>
-        </div>
+      <div class="prog-card reveal d1">
+        <div class="prog-card__thumb"><img src="program-04.jpg" alt="Olympic Weightlifting"></div>
         <div class="prog-card__info">
           <div class="prog-card__name">Olympic Weightlifting</div>
-          <div class="prog-card__meta">
-            <span class="prog-card__tag">12 Weeks</span>
-            <span class="prog-card__tag">5 Sessions</span>
-          </div>
+          <div class="prog-card__tags"><span class="prog-tag">12 Weeks</span><span class="prog-tag">5 Sessions</span></div>
         </div>
       </div>
-
-      <!-- Card 5 — program-05.jpg -->
-      <div class="prog-card reveal reveal-d2">
-        <div class="prog-card__thumb">
-          <div class="prog-card__thumb-img">program-05.jpg</div>
-        </div>
+      <div class="prog-card reveal d2">
+        <div class="prog-card__thumb"><img src="program-05.jpg" alt="Powerlifting Meet Prep"></div>
         <div class="prog-card__info">
           <div class="prog-card__name">Powerlifting — Meet Prep</div>
-          <div class="prog-card__meta">
-            <span class="prog-card__tag">16 Weeks</span>
-            <span class="prog-card__tag">4 Sessions</span>
-          </div>
+          <div class="prog-card__tags"><span class="prog-tag">16 Weeks</span><span class="prog-tag">4 Sessions</span></div>
         </div>
       </div>
-
-      <!-- Card 6 — program-06.jpg -->
-      <div class="prog-card reveal reveal-d3">
-        <div class="prog-card__thumb">
-          <div class="prog-card__thumb-img">program-06.jpg</div>
-        </div>
+      <div class="prog-card reveal d3">
+        <div class="prog-card__thumb"><img src="program-06.jpg" alt="General Strength"></div>
         <div class="prog-card__info">
           <div class="prog-card__name">General Strength — 4 Days</div>
-          <div class="prog-card__meta">
-            <span class="prog-card__tag">8 Weeks</span>
-            <span class="prog-card__tag">4 Sessions</span>
-          </div>
+          <div class="prog-card__tags"><span class="prog-tag">8 Weeks</span><span class="prog-tag">4 Sessions</span></div>
         </div>
       </div>
-
-    </div><!-- /prog-scatter -->
-
-    <div class="programs-lib__cta-row reveal">
-      <a href="#app" class="btn-secondary" style="display:inline-block;">View All Programs in the App →</a>
-      <p class="programs-lib__cta-note">20+ programs available. New blocks added regularly.</p>
     </div>
-
+    <div class="prog-lib__cta reveal">
+      <a href="#" class="btn-secondary">View All Programs in the App →</a>
+      <p class="prog-lib__note">20+ programs available. New blocks added regularly.</p>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     ABOUT JOEY
-     Photo: joey-about.jpg
-══════════════════════════════════════════════════════════ -->
-<section class="about section-pad" id="about">
+<!-- ═══ ABOUT ══════════════════════════════════════════════ -->
+<section class="about sp" id="about">
   <div class="about__glow"></div>
   <div class="container">
     <div class="about__grid">
-
       <div class="about__photo-wrap reveal">
         <div class="about__photo">
-          <!-- PLACEHOLDER: replace .about__photo-img div with:
-               <img src="joey-about.jpg" alt="Joey Szatmary" style="width:100%;height:100%;object-fit:cover;">
-               and remove the ::after CSS placeholder text
-          -->
-          <div class="about__photo-img"></div>
+          <img src="joey-about.jpg" alt="Joey Szatmary">
         </div>
-        <div class="about__photo-badge">
-          <div class="year">2019</div>
-          <div class="label">National Strongman Champion</div>
+        <div class="about__badge">
+          <div class="about__badge-year">2019</div>
+          <div class="about__badge-label">National Champion</div>
         </div>
       </div>
-
-      <div class="about__text">
-        <span class="section-label reveal">The Coach Behind the System</span>
-        <h2 class="section-headline reveal reveal-d1">Built By<br><span class="grad-text">A Competitor.</span></h2>
-        <span class="about__name reveal reveal-d1">Joey Szatmary</span>
-        <p class="about__bio reveal reveal-d2">
-          Joey didn't build this system from a textbook. He built it in competition. From college lacrosse to CrossFit, Olympic lifting, and eventually the world stage of Strongman — he has lived the process of turning raw effort into elite performance. Now he coaches thousands of athletes across the world using the same methods that earned him a national title.
-        </p>
-        <div class="about__creds reveal reveal-d2">
-          <div class="cred-item"><span class="cred-item__dot"></span><span>Kinesiology graduate — trained in the science of human movement</span></div>
-          <div class="cred-item"><span class="cred-item__dot"></span><span>PA Strongest Man 2017 & 2020</span></div>
-          <div class="cred-item"><span class="cred-item__dot"></span><span>Team USA Strongman — competed overseas 2018</span></div>
-          <div class="cred-item"><span class="cred-item__dot"></span><span>National Strongman Champion 2019</span></div>
-          <div class="cred-item"><span class="cred-item__dot"></span><span>Olympic Lifting total: 345kg</span></div>
-          <div class="cred-item"><span class="cred-item__dot"></span><span>Numerous strength & coaching certifications</span></div>
-          <div class="cred-item"><span class="cred-item__dot"></span><span>Top-tier strength sport athletes under his coaching belt</span></div>
-          <div class="cred-item"><span class="cred-item__dot"></span><span>Coaches thousands of athletes worldwide</span></div>
+      <div>
+        <span class="section-label reveal">The Coach</span>
+        <h2 class="sh reveal d1">Built By <span class="grad-text">A Competitor.</span></h2>
+        <span class="about__name reveal d1">Joey Szatmary</span>
+        <p class="about__bio reveal d2">Joey didn't build this from a textbook. He built it in competition — from college lacrosse to CrossFit, Olympic lifting, and eventually the world stage of Strongman. He's lived the process of turning raw effort into elite performance, and now coaches thousands of athletes worldwide using the same system.</p>
+        <div class="about__creds reveal d2">
+          <div class="cred-item"><span class="cred-dot"></span><span>Kinesiology graduate</span></div>
+          <div class="cred-item"><span class="cred-dot"></span><span>PA Strongest Man 2017 & 2020</span></div>
+          <div class="cred-item"><span class="cred-dot"></span><span>Team USA Strongman 2018</span></div>
+          <div class="cred-item"><span class="cred-dot"></span><span>National Strongman Champion 2019</span></div>
+          <div class="cred-item"><span class="cred-dot"></span><span>Olympic Lifting — 345kg total</span></div>
+          <div class="cred-item"><span class="cred-dot"></span><span>Multiple strength certifications</span></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     TRAINING DISCIPLINES
-══════════════════════════════════════════════════════════ -->
-<section class="disciplines section-pad" id="disciplines">
+<!-- ═══ DISCIPLINES ════════════════════════════════════════ -->
+<section class="sp" id="disciplines">
   <div class="container">
     <div class="disciplines__header">
       <span class="section-label reveal">What We Train</span>
-      <h2 class="section-headline reveal reveal-d1">Your Sport.<br><span class="grad-text">Our System.</span></h2>
-      <p class="disciplines__sub reveal reveal-d2">Whether you're competing on the platform, the arena, or just trying to move more weight — we have a program built for you.</p>
+      <h2 class="sh reveal d1">Your Sport. <span class="grad-text">Our System.</span></h2>
+      <p class="disciplines__sub reveal d2">Whether you're competing on the platform, the arena, or just want to move more weight — there's a program for you.</p>
     </div>
-
     <div class="disc-grid">
-      <div class="disc-item reveal">
-        <span class="disc-item__icon">🏋️</span>
-        <div class="disc-item__name">Strength Training</div>
-        <div class="disc-item__sub">General & Functional</div>
-      </div>
-      <div class="disc-item reveal reveal-d1">
-        <span class="disc-item__icon">🪨</span>
-        <div class="disc-item__name">Strongman</div>
-        <div class="disc-item__sub">Atlas Stones to Log Press</div>
-      </div>
-      <div class="disc-item reveal reveal-d2">
-        <span class="disc-item__icon">🔩</span>
-        <div class="disc-item__name">Powerlifting</div>
-        <div class="disc-item__sub">Squat · Bench · Deadlift</div>
-      </div>
-      <div class="disc-item reveal reveal-d1">
-        <span class="disc-item__icon">⚡</span>
-        <div class="disc-item__name">Olympic Weightlifting</div>
-        <div class="disc-item__sub">Snatch & Clean & Jerk</div>
-      </div>
-      <div class="disc-item reveal reveal-d2">
-        <span class="disc-item__icon">🎓</span>
-        <div class="disc-item__name">High School & College</div>
-        <div class="disc-item__sub">Athlete-Specific Programming</div>
-      </div>
+      <div class="disc-item reveal"><span class="disc-icon">🏋️</span><div class="disc-name">Strength Training</div><div class="disc-sub">General & Functional</div></div>
+      <div class="disc-item reveal d1"><span class="disc-icon">🪨</span><div class="disc-name">Strongman</div><div class="disc-sub">Atlas Stones to Log Press</div></div>
+      <div class="disc-item reveal d2"><span class="disc-icon">🔩</span><div class="disc-name">Powerlifting</div><div class="disc-sub">Squat · Bench · Deadlift</div></div>
+      <div class="disc-item reveal d1"><span class="disc-icon">⚡</span><div class="disc-name">Olympic Lifting</div><div class="disc-sub">Snatch & Clean & Jerk</div></div>
+      <div class="disc-item reveal d2"><span class="disc-icon">🎓</span><div class="disc-name">High School & College</div><div class="disc-sub">Athlete-Specific Programming</div></div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     TESTIMONIALS
-     Avatars: testimonial-anna.jpg / testimonial-sean.jpg / testimonial-richard.jpg
-     TO ADD MORE: copy one .testi-card block and paste it inside .testi-grid
-══════════════════════════════════════════════════════════ -->
-<section class="testimonials section-pad" id="results">
+<!-- ═══ TESTIMONIALS ═══════════════════════════════════════ -->
+<section class="sp" id="results">
   <div class="container">
-    <div class="testimonials__header">
+    <div class="testi__header">
       <span class="section-label reveal">Results From the Trenches</span>
-      <h2 class="section-headline reveal reveal-d1">Real Athletes.<br><span class="grad-text">Real Numbers.</span></h2>
+      <h2 class="sh reveal d1">Real Athletes. <span class="grad-text">Real Results.</span></h2>
     </div>
-
     <div class="testi-grid">
 
-      <!-- ── Anna W. ── -->
+      <!-- Anna W. -->
       <div class="testi-card reveal">
         <div class="testi-card__bar"></div>
         <div class="testi-card__body">
           <div class="testi-card__meta">
-            <div class="testi-card__avatar">
-              <!-- PLACEHOLDER: <img src="testimonial-anna.jpg" alt="Anna W."> -->
-              A
-            </div>
-            <div>
-              <div class="testi-card__name">Anna W.</div>
-              <div class="testi-card__sport">Strength Athlete</div>
-            </div>
+            <div class="testi-card__avatar"><img src="testimonial-anna.jpg" alt="Anna W."></div>
+            <div><div class="testi-card__name">Anna W.</div><div class="testi-card__sport">Strength Athlete</div></div>
           </div>
-          <div class="testi-card__stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
+          <div class="testi-card__stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="testi-card__quote">As someone new to a lot of the different lifts, I appreciated the layout of the strength program. It offered a ton of versatility. Ever since then, it has become a game changer for how I train.</p>
         </div>
       </div>
 
-      <!-- ── Sean D. ── -->
-      <div class="testi-card reveal reveal-d1">
+      <!-- Sean D. -->
+      <div class="testi-card reveal d1">
         <div class="testi-card__bar"></div>
         <div class="testi-card__body">
           <div class="testi-card__meta">
-            <div class="testi-card__avatar">
-              <!-- PLACEHOLDER: <img src="testimonial-sean.jpg" alt="Sean D."> -->
-              S
-            </div>
-            <div>
-              <div class="testi-card__name">Sean D.</div>
-              <div class="testi-card__sport">Collective Member</div>
-            </div>
+            <div class="testi-card__avatar"><img src="testimonial-sean.jpg" alt="Sean D."></div>
+            <div><div class="testi-card__name">Sean D.</div><div class="testi-card__sport">Collective Member</div></div>
           </div>
-          <div class="testi-card__stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-          <p class="testi-card__quote">I lost a total of 70 lbs during my first year and have been consistently adding mass ever since. Joey has always been in my corner and helped me every step of the way. I could not ask for a better coach.</p>
+          <div class="testi-card__stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-card__quote">I lost a total of 70 lbs during my first year and have been consistently adding mass ever since. Joey has always been in my corner. I could not ask for a better coach.</p>
         </div>
       </div>
 
-      <!-- ── Richard M. ── -->
-      <div class="testi-card reveal reveal-d2">
+      <!-- Richard M. -->
+      <div class="testi-card reveal d2">
         <div class="testi-card__bar"></div>
         <div class="testi-card__body">
           <div class="testi-card__meta">
-            <div class="testi-card__avatar">
-              <!-- PLACEHOLDER: <img src="testimonial-richard.jpg" alt="Richard M."> -->
-              R
-            </div>
-            <div>
-              <div class="testi-card__name">Richard M.</div>
-              <div class="testi-card__sport">App Member — 3 Years</div>
-            </div>
+            <div class="testi-card__avatar"><img src="testimonial-richard.jpg" alt="Richard M."></div>
+            <div><div class="testi-card__name">Richard M.</div><div class="testi-card__sport">App Member — 3 Years</div></div>
           </div>
-          <div class="testi-card__stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
+          <div class="testi-card__stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="testi-card__quote">Joey does an excellent job of taking the intimidating world of strength training and breaking it down into manageable, bite-size pieces for anyone interested in living a strong, healthy life.</p>
         </div>
       </div>
 
-      <!-- ── TO ADD MORE TESTIMONIALS: copy the block above and paste here ── -->
+      <!-- ── ADD MORE TESTIMONIALS HERE: copy a .testi-card block ── -->
 
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     FAQ
-══════════════════════════════════════════════════════════ -->
-<section class="faq section-pad" id="faq">
+<!-- ═══ FAQ ════════════════════════════════════════════════ -->
+<section class="faq sp" id="faq">
   <div class="faq__glow"></div>
   <div class="container">
     <div class="faq__header">
       <span class="section-label reveal">Questions</span>
-      <h2 class="section-headline reveal reveal-d1">Before You <span class="grad-text">Apply.</span></h2>
+      <h2 class="sh reveal d1">Before You <span class="grad-text">Apply.</span></h2>
     </div>
-
     <div class="faq__list">
-
-      <div class="faq-item reveal" data-faq>
-        <div class="faq-item__q" onclick="toggleFaq(this)">
-          <span class="faq-item__q-text">What should my fitness level be?</span>
-          <div class="faq-item__icon">
-            <svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
-          </div>
-        </div>
-        <div class="faq-item__a">
-          <p class="faq-item__a-text">Your fitness level doesn't matter — your intention does. If you want to be stronger and you're willing to invest in that goal, you're already qualified. The system meets you where you are and builds from there.</p>
-        </div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">What should my fitness level be?</span><div class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div>
+        <div class="faq-a"><p class="faq-a-text">Your fitness level doesn't matter — your intention does. If you want to be stronger and you're willing to invest in that goal, you're qualified. The system meets you where you are and builds from there.</p></div>
       </div>
-
-      <div class="faq-item reveal reveal-d1" data-faq>
-        <div class="faq-item__q" onclick="toggleFaq(this)">
-          <span class="faq-item__q-text">Do I need to be local to the Lions Den gym?</span>
-          <div class="faq-item__icon">
-            <svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
-          </div>
-        </div>
-        <div class="faq-item__a">
-          <p class="faq-item__a-text">No — everything we do is online. You can be anywhere in the world and access the full coaching experience through the app. But if you happen to be local, we'd love to have you in the gym.</p>
-        </div>
+      <div class="faq-item reveal d1" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">Do I need to be local to the Lions Den?</span><div class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div>
+        <div class="faq-a"><p class="faq-a-text">No — everything is online. You can be anywhere in the world and access the full experience through the app. But if you're local, we'd love to have you in the gym.</p></div>
       </div>
-
-      <div class="faq-item reveal reveal-d1" data-faq>
-        <div class="faq-item__q" onclick="toggleFaq(this)">
-          <span class="faq-item__q-text">Do you guarantee results?</span>
-          <div class="faq-item__icon">
-            <svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
-          </div>
-        </div>
-        <div class="faq-item__a">
-          <p class="faq-item__a-text">Can you guarantee that you'll work hard every day, follow the program, and dial in your nutrition? If you can guarantee that, I will guarantee my work. If you follow the plan and are not satisfied with your results, you'll get your money back. It's that simple.</p>
-        </div>
+      <div class="faq-item reveal d1" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">Do you guarantee results?</span><div class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div>
+        <div class="faq-a"><p class="faq-a-text">Can you guarantee you'll work hard every day, follow the program, and dial in your nutrition? If you can guarantee that, I'll guarantee my work. If you follow the plan and aren't satisfied, you get your money back.</p></div>
       </div>
-
-      <div class="faq-item reveal reveal-d2" data-faq>
-        <div class="faq-item__q" onclick="toggleFaq(this)">
-          <span class="faq-item__q-text">Do I get weekly check-ins and form checks?</span>
-          <div class="faq-item__icon">
-            <svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
-          </div>
-        </div>
-        <div class="faq-item__a">
-          <p class="faq-item__a-text">Yes. Weekly check-ins and form check reviews are a core part of the 1:1 coaching experience. Send your footage, get surgical feedback. We don't do vague corrections here.</p>
-        </div>
+      <div class="faq-item reveal d2" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">Do I get weekly check-ins and form checks?</span><div class="faq-icon"><svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div>
+        <div class="faq-a"><p class="faq-a-text">Yes. Weekly check-ins and form reviews are core to the 1:1 coaching experience. Send your footage and get surgical feedback. We don't do vague corrections here.</p></div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     FINAL CTA
-     Background: joey-cta-bg.jpg
-══════════════════════════════════════════════════════════ -->
+<!-- ═══ FINAL CTA ══════════════════════════════════════════ -->
 <section class="final-cta" id="final-cta">
   <div class="final-cta__bg"></div>
-  <div class="final-cta__overlay-label">[ joey-cta-bg.jpg — upload this image to GitHub root ]</div>
   <div class="final-cta__content">
     <span class="final-cta__eyebrow reveal">Stop Waiting. Start Building.</span>
-    <h2 class="final-cta__headline reveal reveal-d1">
-      Progress Or Your<br><span class="grad-text">Money Back.</span>
-    </h2>
-    <p class="final-cta__body reveal reveal-d2">
-      I'm not here to take your money — I'm here to build your strength. Fill out the questionnaire and let's get to work. The only thing left to do is start.
-    </p>
-    <a href="#" class="btn-mega reveal reveal-d3">Apply Now →</a>
+    <h2 class="final-cta__headline reveal d1">Progress Or Your<br><span class="grad-text">Money Back.</span></h2>
+    <p class="final-cta__body reveal d2">I'm not here to take your money — I'm here to build your strength. Fill out the questionnaire and let's get to work.</p>
+    <a href="#" class="btn-grad reveal d3">Apply Now →</a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════════════════ -->
+<!-- ═══ FOOTER ══════════════════════════════════════════════ -->
 <footer class="footer">
   <div class="container">
     <div class="footer__inner">
       <div class="footer__brand">
         <div class="footer__brand-logo">
-          <div class="nav__logo-mark">SZ</div>
-          <span class="nav__logo-name">Szat Strength</span>
+          <img src="szat-Logo.png" alt="Szat Strength">
         </div>
-        <p>Your one stop shop for everything strength. Built by a competitor. Designed for athletes who are serious about results.</p>
+        <p>Your one stop shop for everything strength. Built by a competitor, designed for athletes serious about results.</p>
       </div>
       <div>
         <div class="footer__col-title">Quick Links</div>
@@ -1715,10 +1162,18 @@ body::after {
       <div>
         <div class="footer__col-title">Follow Along</div>
         <div class="footer__socials">
-          <a href="#" class="social-btn">IG</a>
-          <a href="#" class="social-btn">FB</a>
-          <a href="#" class="social-btn">YT</a>
-          <a href="#" class="social-btn">TT</a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/szatstrength/?hl=en" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/joey.szatmary" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/c/SzatStrength1" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -1732,35 +1187,27 @@ body::after {
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════
-     JS
-══════════════════════════════════════════════════════════ -->
 <script>
-  // ── Nav scroll ──
+  // Nav scroll
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  }, { passive: true });
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
-  // ── Scroll reveal ──
-  const revealEls = document.querySelectorAll('.reveal');
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-    });
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.1 });
-  revealEls.forEach(el => revealObs.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // ── FAQ accordion ──
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    // Close all
+  // FAQ
+  function toggleFaq(item) {
+    const open = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    // Open clicked if it was closed
-    if (!isOpen) item.classList.add('open');
+    if (!open) item.classList.add('open');
   }
-</script>
 
+  // Mobile menu
+  function openMobileMenu()  { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+</script>
 </body>
 </html>
