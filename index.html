@@ -83,7 +83,35 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
 .hero__sub{font-family:var(--fb);font-size:16px;line-height:1.65;color:rgba(255,255,255,.72);max-width:520px;margin:0 auto 20px;}
 .hero__actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 /* Mobile: BEAST ends ~65% down the 828x1792 image */
-@media(max-width:768px){.hero__content{ bottom: 2%;}.hero__sub{font-size:15px;max-width:320px; margin: 0 auto 15px;line-height: 1.4;}}
+@media(max-width:768px){
+  /* 1. Stop absolute positioning on mobile to let it flow naturally below the image */
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero__content {
+    position: relative; /* Removes it from overlapping the image */
+    top: 0 !important; 
+    bottom: 0 !important;
+    padding: 40px 20px;
+    background: var(--bg); /* Ensures it blends with the rest of the page */
+  }
+  .hero__sub {
+    font-size: 15px;
+    max-width: 100%; /* Prevents horizontal scroll from wide fixed widths */
+    margin: 0 auto 20px;
+  }
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .hero__actions .btn-white, 
+  .hero__actions .btn-outline {
+    width: 100%; /* Full width buttons are easier to hit on mobile */
+    text-align: center;
+  }
+}
 
 /* ─── TRUST BAR ─────────────────────────────────────── */
 .trust-bar{background:rgba(0,0,0,.35);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;}
@@ -343,8 +371,20 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
   .trust-sep{display:none;}
   .hero__actions{flex-direction:column;align-items:center;}
   .footer__bottom{flex-direction:column;text-align:center;}
-  /* Prevent any section from overflowing horizontally */
-  section,footer,div{max-width:100%;}
+  
+  @media(max-width:640px){
+  /* ... keep your existing mobile styles here ... */
+  
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+  }
+  .container {
+    padding: 0 20px;
+    width: 100%;
+    overflow: hidden; /* Safety net */
+  }
 }
 </style>
 </head>
